@@ -2,25 +2,37 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
-import { HTTP } from 'meteor/http';
+import {url, traktApiKey} from '../startup/config.js';
+import { Films } from './db/filmsdb.js'
 
+let filmList = [];
 
-MyCollection = new Mongo.Collection('films');
+let myHeaders = new Headers({
+  'Content-Type': 'application/json',
+  'trakt-api-version': '2',
+  'trakt-api-key': traktApiKey,
+});
+
 
 Meteor.methods({
   getData() {
     try {
-      console.log(filmList);
-      insertDB(filmList);
+      fetch(url, {
+        headers: myHeaders,
+      })
+        .then(response => response.json())
+        .then((data) => {
+          filmList = data;
+          Meteor.call('insertToDB', filmList);
+        });
     } catch (error) {
       throw new Meteor.Error('oops', 'something broke');
     }
   },
-  insertDB() {
+  insertToDB(array) {
     try {
-      filmList.forEach(film => {
+      array.forEach((film) => {
         Films.insert(film);
-        console.log(Films);
       });
     } catch (error) {
       throw new Meteor.Error('oops', 'something broke');
