@@ -7,8 +7,8 @@ import Film from './Film';
 
 const FilmsList = ({ films }) => (
   <div>
-    {films.map(film => (
-      <Film key={film.id} title={film.title} year={film.year} />
+    {films.map((film, i) => (
+      <Film key={i} number={i} title={film.title} year={film.year} />
     ))}
   </div>
 );
@@ -16,9 +16,9 @@ const FilmsList = ({ films }) => (
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      ids: PropTypes.object.isRequired,
       title: PropTypes.string.isRequired,
-      year: PropTypes.string.isRequired,
+      year: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
 };

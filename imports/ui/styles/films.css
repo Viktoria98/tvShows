@@ -1,0 +1,26 @@
+.FilmListTableHeader {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.FilmListTableHeader span {
+    font-size: 24px;
+    display: inline-block;
+    margin: 40px;
+}
+
+.FilmListTableHeader span.headerYear {
+    margin-left: 350px;
+}
+
+.FilmListTableHeader span.year {
+    width: 100px;
+}
+
+.FilmListTableHeader span.number {
+    width: 50px;
+}
+
+.FilmListTableHeader span.title {
+    width: 400px;
+}
