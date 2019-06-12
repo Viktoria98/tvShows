@@ -1,10 +1,7 @@
 // eslint-disable-next-line import/prefer-default-export
 
-export const setVisibilityFilter = filter => ({
-  type: 'SET_VISIBILITY_FILTER',
-  filter,
+export const displayShowsFromDB = filmsArray => ({
+  type: 'DISPLSAY_SHOWS',
+  filmsArray,
 });
 
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL',
-};

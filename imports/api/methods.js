@@ -5,8 +5,6 @@ import { check } from 'meteor/check';
 import {url, traktApiKey} from '../startup/config.js';
 import { Films } from './db/filmsdb.js'
 
-let filmList = [];
-
 let myHeaders = new Headers({
   'Content-Type': 'application/json',
   'trakt-api-version': '2',
@@ -22,8 +20,8 @@ Meteor.methods({
       })
         .then(response => response.json())
         .then((data) => {
-          filmList = data;
-          Meteor.call('insertToDB', filmList);
+          console.log(data);
+          Meteor.call('insertToDB', data);
         });
     } catch (error) {
       throw new Meteor.Error('oops', 'something broke');

@@ -8,8 +8,7 @@ import '../../styles/films.css';
 
 const FilmListWrapper = ({ films }) => (
   <div className='FilmListTableHeader'>
-    <span><b>Number</b></span>
-    <span><b>Title</b></span>
+    <span className='headerTitle'><b>Title</b></span>
     <span className='headerYear'><b>Year</b></span>
     <FilmsList films={films} />
   </div>

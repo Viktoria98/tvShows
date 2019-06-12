@@ -16,7 +16,6 @@ const FilmsList = ({ films }) => (
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
     PropTypes.shape({
-      ids: PropTypes.object.isRequired,
       title: PropTypes.string.isRequired,
       year: PropTypes.number.isRequired,
     }).isRequired,

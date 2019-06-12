@@ -13,6 +13,10 @@
     margin-left: 350px;
 }
 
+.FilmListTableHeader span.headerTitle {
+    margin-left: 200px;
+}
+
 .FilmListTableHeader span.year {
     width: 100px;
 }
