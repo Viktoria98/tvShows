@@ -11,7 +11,7 @@ import '../../styles/films.css';
 
 class FilmListWrapper extends React.Component {
   componentDidMount() {
-    const { fetchData } = this.props;
+    const { fetchData, films } = this.props;
     fetchData();
   }
 
@@ -19,8 +19,6 @@ class FilmListWrapper extends React.Component {
     const { films } = this.props;
     return (
       <div className="FilmListTableHeader">
-        <span className="headerTitle"><b>Title</b></span>
-        <span className="headerYear"><b>Year</b></span>
         <FilmsList films={films} />
       </div>
     );

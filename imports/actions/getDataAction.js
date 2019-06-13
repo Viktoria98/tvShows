@@ -7,6 +7,5 @@ import '../api/methods';
 export function getDataAction() {
   return () => {
     Meteor.call('getData');
-    console.log('CALL');
   };
 }

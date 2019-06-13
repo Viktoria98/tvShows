@@ -1,10 +1,14 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+/* eslint-disable no-console */
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
-import {url, traktApiKey} from '../startup/config.js';
-import { Films } from './db/filmsdb.js'
+import _ from 'lodash';
+import { url, traktApiKey, tmdbUrl, tmdbApiKey, imgUrl } from '../startup/config.js';
+import { Films } from './db/filmsdb.js';
 
-let myHeaders = new Headers({
+const myHeaders = new Headers({
   'Content-Type': 'application/json',
   'trakt-api-version': '2',
   'trakt-api-key': traktApiKey,
@@ -19,20 +23,40 @@ Meteor.methods({
       })
         .then(response => response.json())
         .then((data) => {
-          console.log('data');
-          Meteor.call('insertToDB', data);
+          console.log(data);
+          Meteor.call('getFromTMDB', data);
         });
     } catch (error) {
       throw new Meteor.Error('oops', 'something broke');
     }
   },
-  insertToDB(array) {
-    try {
-      array.forEach((film) => {
-        Films.insert(film);
-      });
-    } catch (error) {
-      throw new Meteor.Error('oops', 'something broke');
-    }
+  // insertToDB() {
+  //   console.log(films);
+  //   try {
+  //     films.forEach((film) => {
+  //       Films.insert(film);
+  //     });
+  //   } catch (error) {
+  //     throw new Meteor.Error('oops', 'something broke');
+  //   }
+  // },
+  getFromTMDB(filmsArray) {
+    filmsArray.forEach((element) => {
+      try {
+        fetch(`${tmdbUrl}/${element.ids.tmdb}?api_key=${tmdbApiKey}`)
+          .then(response => response.json())
+          .then((data) => {
+            element.poster_path = `${imgUrl}${data.poster_path}`;
+            element.overview = data.overview;
+            element.popularity = data.popularity;
+            element.genres = data.genres;
+            element.vote_average = data.vote_average;
+            Films.insert(element);
+          });
+      } catch (error) {
+        throw new Meteor.Error('oops', 'something broke');
+      }
+    });
+    return filmsArray;
   },
 });

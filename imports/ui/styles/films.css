@@ -4,27 +4,29 @@
 }
 
 .FilmListTableHeader span {
-    font-size: 24px;
-    display: inline-block;
-    margin: 40px;
+    font-size: 22px;
 }
 
-.FilmListTableHeader span.headerYear {
-    margin-left: 350px;
+
+.filmItem {
+    display: flex;
+    margin: 40px 10px;
+
+
 }
 
-.FilmListTableHeader span.headerTitle {
-    margin-left: 200px;
+.descriptionSection {
+    padding-left: 20px;
 }
 
-.FilmListTableHeader span.year {
-    width: 100px;
+.descriptionSection div {
+    padding: 10px;
 }
 
-.FilmListTableHeader span.number {
-    width: 50px;
+.descriptionSection label {
+    font-size: 22px;
 }
 
-.FilmListTableHeader span.title {
-    width: 400px;
+.descriptionSection .title {
+    font-size: 36px;
 }
