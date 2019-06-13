@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
@@ -20,7 +19,7 @@ Meteor.methods({
       })
         .then(response => response.json())
         .then((data) => {
-          console.log(data);
+          console.log('data');
           Meteor.call('insertToDB', data);
         });
     } catch (error) {

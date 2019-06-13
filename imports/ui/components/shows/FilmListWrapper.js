@@ -1,17 +1,32 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-filename-extension */
-
 import React from 'react';
-import PropTypes from 'prop-types';
+import { withTracker } from 'meteor/react-meteor-data';
 import FilmsList from './FilmsList';
+import { Films } from '../../../api/db/filmsdb';
+import { url } from '../../../startup/config';
+
 import '../../styles/films.css';
 
-const FilmListWrapper = ({ films }) => (
-  <div className='FilmListTableHeader'>
-    <span className='headerTitle'><b>Title</b></span>
-    <span className='headerYear'><b>Year</b></span>
-    <FilmsList films={films} />
-  </div>
-);
+class FilmListWrapper extends React.Component {
+  componentDidMount() {
+    const { fetchData } = this.props;
+    fetchData();
+  }
 
-export default FilmListWrapper;
+  render() {
+    const { films } = this.props;
+    return (
+      <div className="FilmListTableHeader">
+        <span className="headerTitle"><b>Title</b></span>
+        <span className="headerYear"><b>Year</b></span>
+        <FilmsList films={films} />
+      </div>
+    );
+  }
+}
+
+export default withTracker(() => ({
+  films: Films.find({}).fetch(),
+}))(FilmListWrapper);
