@@ -9,3 +9,19 @@ export function getDataAction() {
     Meteor.call('getData');
   };
 }
+
+export function setInitialState(list) {
+  console.log('SETINITIAL');
+  return {
+    type: 'SET_INITIAL_STATE',
+    list,
+  };
+}
+
+export function sortByColumn(column, filmlist) {
+  return {
+    type: 'SORT_ACTION',
+    column,
+    filmlist,
+  };
+}

@@ -1,23 +1,22 @@
 /* eslint-disable import/no-unresolved */
 import { combineReducers } from 'redux';
+import { _ } from 'lodash';
 
-function shows(state = [], action) {
+function sortShows(state = [], action) {
   switch (action.type) {
-    case 'DISPLAY_SHOWS':
+    case 'SET_INITIAL_STATE':
       return [
-        ...state,
-        {
-          shows: action.filmsArray,
-        },
+        action.list,
       ];
+    case 'SORT_ACTION':
+      return _.orderBy(action.filmlist, action.column, 'desc');
     default:
       return state;
   }
 }
 
-
 const reducer = combineReducers({
-  shows,
+  sortShows,
 });
 
 export default reducer;

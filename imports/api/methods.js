@@ -23,23 +23,12 @@ Meteor.methods({
       })
         .then(response => response.json())
         .then((data) => {
-          console.log(data);
           Meteor.call('getFromTMDB', data);
         });
     } catch (error) {
       throw new Meteor.Error('oops', 'something broke');
     }
   },
-  // insertToDB() {
-  //   console.log(films);
-  //   try {
-  //     films.forEach((film) => {
-  //       Films.insert(film);
-  //     });
-  //   } catch (error) {
-  //     throw new Meteor.Error('oops', 'something broke');
-  //   }
-  // },
   getFromTMDB(filmsArray) {
     filmsArray.forEach((element) => {
       try {
