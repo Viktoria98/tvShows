@@ -11,11 +11,13 @@ import { Films } from '../../../api/db/filmsdb';
 import { url } from '../../../startup/config';
 
 import '../../styles/films.css';
+import { setInitialState } from '../../../actions';
 
 class FilmListWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.onSort = this.onSort.bind(this);
+    this.onSearch = this.onSearch.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +30,12 @@ class FilmListWrapper extends React.Component {
     sortData(e.target.id, films);
   }
 
+  onSearch(e) {
+    const { searchData, initialState, films } = this.props;
+    initialState(films);
+    searchData(e.target.value);
+  }
+
   render() {
     const { films, sortedlist } = this.props;
     return (
@@ -36,7 +44,8 @@ class FilmListWrapper extends React.Component {
         <span className="sort" id='year' onClick={this.onSort}>Year</span>
         <span className="sort" id='popularity' onClick={this.onSort}>Popularity</span>
         <span className="sort" id='vote_average' onClick={this.onSort}>Vote average</span>
-        { sortedlist[0] != undefined ? (
+        <input type="text" placeholder='search..' onChange={this.onSearch} />
+        { sortedlist[0] !== undefined ? (
           <FilmsList films={sortedlist} />
         ) : (
           <FilmsList films={films} />

@@ -11,7 +11,6 @@ export function getDataAction() {
 }
 
 export function setInitialState(list) {
-  console.log('SETINITIAL');
   return {
     type: 'SET_INITIAL_STATE',
     list,
@@ -23,5 +22,12 @@ export function sortByColumn(column, filmlist) {
     type: 'SORT_ACTION',
     column,
     filmlist,
+  };
+}
+
+export function search(text) {
+  return {
+    type: 'SEARCH_ACTION',
+    text,
   };
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getDataAction } from '../../actions/index';
 import { sortByColumn } from '../../actions/index';
 import { setInitialState } from '../../actions/index';
+import { search } from '../../actions/index';
 import FilmListWrapper from '../components/shows/FilmListWrapper';
 
 const mapStateToProps = state => ({
@@ -18,6 +19,9 @@ const mapDispatchToProps = dispatch => ({
   },
   sortData: (column, filmlist) => {
     dispatch(sortByColumn(column, filmlist));
+  },
+  searchData: (text) => {
+    dispatch(search(text));
   },
 });
 
