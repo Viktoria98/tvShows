@@ -9,7 +9,7 @@ function sortShows(state = [], action) {
         ...action.list,
       ];
     case 'SORT_ACTION':
-      return _.orderBy(action.filmlist, action.column, 'desc');
+      return _.orderBy(state, action.column, 'desc');
     case 'SEARCH_ACTION':
       return state.filter((elem) => {
         return elem.title.toLowerCase().includes(action.text.toLowerCase());

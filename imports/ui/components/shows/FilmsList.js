@@ -5,23 +5,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Film from './Film';
 
-const FilmsList = ({ films }) => (
-  <div>
-    {films.map((film, i) => (
-      <Film 
-        key={i} 
-        number={i} 
-        title={film.title} 
-        year={film.year} 
-        poster_path={film.poster_path}
-        overview={film.overview}
-        popularity={film.popularity}
-        genres={film.genres}
-        vote_average={film.vote_average} 
-      />
-    ))}
-  </div>
-);
+class FilmsList extends React.Component {
+  componentDidMount() {
+  }
+
+  render() {
+    const { films } = this.props;
+    return (
+      <div>
+        {films.map((film, i) => (
+          <Film
+            key={i}
+            number={i}
+            title={film.title}
+            year={film.year}
+            poster_path={film.poster_path}
+            overview={film.overview}
+            popularity={film.popularity}
+            genres={film.genres}
+            vote_average={film.vote_average}
+          />
+        ))}
+      </div>
+    );
+  }
+}
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(

@@ -4,12 +4,14 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import ReduxWrapper from '../containers/ReduxWrapper';
+import PaginationContainer from '../containers/PaginationContainer';
 
 class App extends React.Component {
   render() {
     return (
       <div>
         <ReduxWrapper />
+        <PaginationContainer />
       </div>
     );
   }

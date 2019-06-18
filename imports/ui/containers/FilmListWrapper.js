@@ -6,12 +6,11 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-import FilmsList from './FilmsList';
-import { Films } from '../../../api/db/filmsdb';
-import { url } from '../../../startup/config';
+import FilmsList from '../components/shows/FilmsList';
+import { Films } from '../../api/db/filmsdb';
+import { url } from '../../startup/config';
 
-import '../../styles/films.css';
-import { setInitialState } from '../../../actions';
+import '../styles/films.css';
 
 class FilmListWrapper extends React.Component {
   constructor(props) {
@@ -26,7 +25,8 @@ class FilmListWrapper extends React.Component {
   }
 
   onSort(e) {
-    const { films, sortData } = this.props;
+    const { films, sortData, initialState } = this.props;
+    initialState(films);
     sortData(e.target.id, films);
   }
 

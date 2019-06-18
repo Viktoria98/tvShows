@@ -17,11 +17,10 @@ export function setInitialState(list) {
   };
 }
 
-export function sortByColumn(column, filmlist) {
+export function sortByColumn(column) {
   return {
     type: 'SORT_ACTION',
     column,
-    filmlist,
   };
 }
 
@@ -29,5 +28,12 @@ export function search(text) {
   return {
     type: 'SEARCH_ACTION',
     text,
+  };
+}
+
+export function loadMore() {
+  console.log('LOAD');
+  return {
+    type: 'LOAD_MORE_ACTION',
   };
 }

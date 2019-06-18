@@ -4,7 +4,7 @@ import { getDataAction } from '../../actions/index';
 import { sortByColumn } from '../../actions/index';
 import { setInitialState } from '../../actions/index';
 import { search } from '../../actions/index';
-import FilmListWrapper from '../components/shows/FilmListWrapper';
+import FilmListWrapper from './FilmListWrapper';
 
 const mapStateToProps = state => ({
   sortedlist: state.sortShows,
