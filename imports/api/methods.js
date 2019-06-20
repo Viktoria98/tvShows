@@ -14,7 +14,6 @@ const myHeaders = new Headers({
   'trakt-api-key': traktApiKey,
 });
 
-
 Meteor.methods({
   getData() {
     try {
@@ -47,5 +46,18 @@ Meteor.methods({
       }
     });
     return filmsArray;
+  },
+  getPage(page) {
+    try {
+      fetch(`${url}?page=${page}`, {
+        headers: myHeaders,
+      })
+        .then(response => response.json())
+        .then((data) => {
+          Meteor.call('getFromTMDB', data);
+        });
+    } catch (error) {
+      throw new Meteor.Error('oops', 'something broke');
+    }
   },
 });

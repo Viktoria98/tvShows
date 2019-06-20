@@ -7,7 +7,7 @@ import { search } from '../../actions/index';
 import FilmListWrapper from './FilmListWrapper';
 
 const mapStateToProps = state => ({
-  sortedlist: state.sortShows,
+  showsPage: state.showsPage,
 });
 
 const mapDispatchToProps = dispatch => ({

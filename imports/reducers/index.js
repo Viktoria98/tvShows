@@ -2,12 +2,14 @@
 import { combineReducers } from 'redux';
 import { _ } from 'lodash';
 
-function sortShows(state = [], action) {
+const initialState = {
+  sortFilter: '',
+  serchText: '',
+};
+
+
+function showsPage(state = initialState, action) {
   switch (action.type) {
-    case 'SET_INITIAL_STATE':
-      return [
-        ...action.list,
-      ];
     case 'SORT_ACTION':
       return _.orderBy(state, action.column, 'desc');
     case 'SEARCH_ACTION':
@@ -19,8 +21,20 @@ function sortShows(state = [], action) {
   }
 }
 
+function pagination(state = { currentPage: 1 }, action) {
+  switch (action.type) {
+    case 'SET_PAGE':
+      return {
+        currentPage: action.page + 1,
+      }
+    default:
+      return state;
+  }
+}
+
 const reducer = combineReducers({
-  sortShows,
+  showsPage,
+  pagination,
 });
 
 export default reducer;

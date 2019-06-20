@@ -10,13 +10,6 @@ export function getDataAction() {
   };
 }
 
-export function setInitialState(list) {
-  return {
-    type: 'SET_INITIAL_STATE',
-    list,
-  };
-}
-
 export function sortByColumn(column) {
   return {
     type: 'SORT_ACTION',
@@ -31,9 +24,22 @@ export function search(text) {
   };
 }
 
-export function loadMore() {
-  console.log('LOAD');
+export function fetchFilmsByPage(page) {
+  return () => {
+    Meteor.call('getPage', page);
+  };
+}
+
+export function setPage(page) {
   return {
-    type: 'LOAD_MORE_ACTION',
+    type: 'SET_PAGE',
+    page,
+  };
+}
+
+export function loadMore(page) {
+  return (dispatch) => {
+    dispatch(fetchFilmsByPage(page + 1));
+    dispatch(setPage(page));
   };
 }

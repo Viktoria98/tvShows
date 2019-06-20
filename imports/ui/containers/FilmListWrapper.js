@@ -25,19 +25,17 @@ class FilmListWrapper extends React.Component {
   }
 
   onSort(e) {
-    const { films, sortData, initialState } = this.props;
-    initialState(films);
+    const { films, sortData} = this.props;
     sortData(e.target.id, films);
   }
 
   onSearch(e) {
-    const { searchData, initialState, films } = this.props;
-    initialState(films);
+    const { searchData } = this.props;
     searchData(e.target.value);
   }
 
   render() {
-    const { films, sortedlist } = this.props;
+    const { films } = this.props;
     return (
       <div className="FilmListTableHeader">
         <span className="sort">Sort by: </span>
@@ -45,12 +43,7 @@ class FilmListWrapper extends React.Component {
         <span className="sort" id='popularity' onClick={this.onSort}>Popularity</span>
         <span className="sort" id='vote_average' onClick={this.onSort}>Vote average</span>
         <input type="text" placeholder='search..' onChange={this.onSearch} />
-        { sortedlist[0] !== undefined ? (
-          <FilmsList films={sortedlist} />
-        ) : (
-          <FilmsList films={films} />
-        )
-        }
+        <FilmsList films={films} />
       </div>
     );
   }
