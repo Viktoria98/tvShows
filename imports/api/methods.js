@@ -14,6 +14,13 @@ const myHeaders = new Headers({
   'trakt-api-key': traktApiKey,
 });
 
+
+if (Meteor.isServer) {
+  Meteor.publish('films', function filmsPublication() {
+    return Films.find();
+  });
+}
+
 Meteor.methods({
   getData() {
     try {

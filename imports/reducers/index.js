@@ -11,11 +11,16 @@ const initialState = {
 function showsPage(state = initialState, action) {
   switch (action.type) {
     case 'SORT_ACTION':
-      return _.orderBy(state, action.column, 'desc');
+      return {
+        ...state,
+        sortFilter: action.filter,
+      };
     case 'SEARCH_ACTION':
-      return state.filter((elem) => {
-        return elem.title.toLowerCase().includes(action.text.toLowerCase());
-      });
+      console.log('search_reducer ' + action.text);
+      return {
+        ...state,
+        serchText: action.text,
+      };
     default:
       return state;
   }
@@ -26,7 +31,7 @@ function pagination(state = { currentPage: 1 }, action) {
     case 'SET_PAGE':
       return {
         currentPage: action.page + 1,
-      }
+      };
     default:
       return state;
   }

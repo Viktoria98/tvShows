@@ -17,8 +17,8 @@ const mapDispatchToProps = dispatch => ({
   initialState: (list) => {
     dispatch(setInitialState(list));
   },
-  sortData: (column, filmlist) => {
-    dispatch(sortByColumn(column, filmlist));
+  sortData: (filter) => {
+    dispatch(sortByColumn(filter));
   },
   searchData: (text) => {
     dispatch(search(text));

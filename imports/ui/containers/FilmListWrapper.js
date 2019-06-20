@@ -6,9 +6,9 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
+import { _ } from 'lodash';
 import FilmsList from '../components/shows/FilmsList';
 import { Films } from '../../api/db/filmsdb';
-import { url } from '../../startup/config';
 
 import '../styles/films.css';
 
@@ -25,11 +25,12 @@ class FilmListWrapper extends React.Component {
   }
 
   onSort(e) {
-    const { films, sortData} = this.props;
-    sortData(e.target.id, films);
+    const { sortData } = this.props;
+    sortData(e.target.id);
   }
 
   onSearch(e) {
+    console.log('onsearch');
     const { searchData } = this.props;
     searchData(e.target.value);
   }
@@ -39,16 +40,20 @@ class FilmListWrapper extends React.Component {
     return (
       <div className="FilmListTableHeader">
         <span className="sort">Sort by: </span>
-        <span className="sort" id='year' onClick={this.onSort}>Year</span>
-        <span className="sort" id='popularity' onClick={this.onSort}>Popularity</span>
-        <span className="sort" id='vote_average' onClick={this.onSort}>Vote average</span>
-        <input type="text" placeholder='search..' onChange={this.onSearch} />
+        <span className="sort" id="year" onClick={this.onSort}>Year</span>
+        <span className="sort" id="popularity" onClick={this.onSort}>Popularity</span>
+        <span className="sort" id="vote_average" onClick={this.onSort}>Vote average</span>
+        <input type="text" placeholder="search.." onChange={this.onSearch} />
         <FilmsList films={films} />
       </div>
     );
   }
 }
 
-export default withTracker(() => ({
-  films: Films.find({}).fetch(),
-}))(FilmListWrapper);
+export default withTracker((state) => {
+  const sortfilms = _.orderBy(Films.find({}).fetch(), state.showsPage.sortFilter, 'desc');
+  const films = sortfilms.filter(item => item.title.toLowerCase().includes(state.showsPage.serchText));
+  return {
+    films,
+  };
+})(FilmListWrapper);

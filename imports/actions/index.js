@@ -10,14 +10,15 @@ export function getDataAction() {
   };
 }
 
-export function sortByColumn(column) {
+export function sortByColumn(filter) {
   return {
     type: 'SORT_ACTION',
-    column,
+    filter,
   };
 }
 
 export function search(text) {
+  console.log('search_action ' + text);
   return {
     type: 'SEARCH_ACTION',
     text,
