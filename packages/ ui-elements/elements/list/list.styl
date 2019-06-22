@@ -1,0 +1,372 @@
+/**
+*   CORE LIST STYLES
+*/
+.list
+  overflow hidden
+  position relative
+  display flex
+  background #f9fafc
+  // drag and drop item (filter/issue)
+  &__dnd-item
+    &.-is-dragging
+      opacity 0
+    &.-insert-above
+      position relative
+      &:before
+        content ''
+        width 100%
+        height 2px
+        background #0070d2
+        position absolute
+        top 0
+        left 0
+      &:after
+        content ''
+        width 4px
+        height 4px
+        border-radius 50%
+        border 2px solid #0070d2
+        background #f9fafc
+        position absolute
+        top -3px
+        left -8px
+    &.-insert-below
+      position relative
+      &:before
+        content ''
+        width 100%
+        height 2px
+        background #0070d2
+        position absolute
+        bottom -1px
+        left 0
+      &:after
+        content ''
+        width 4px
+        height 4px
+        border-radius 50%
+        border 2px solid #0070d2
+        background #f9fafc
+        position absolute
+        bottom -4px
+        left -8px
+    // textarea for editable filters
+    .inline-field
+      width 100%
+      &__input
+        font-weight normal
+        color black
+  // list filter panel (left-side)
+  &__filter-panel
+    width 237px
+    list-style none
+    margin 0
+    padding 10px 12px 0 0
+    overflow auto
+    .filter-group
+      position relative
+      &__expand-btn
+        padding 0
+        color #0070d2
+        border none
+        background none
+        font-size 13px
+        outline none
+        cursor pointer
+    .filter-category
+      margin-bottom 10px
+      padding-left 21px
+      &__name
+        color #a9b2c4
+        text-transform uppercase
+        font-size 13px
+        line-height 1.6
+        font-weight bold
+    .filter
+      transition all 0.3s
+      display flex
+      justify-content space-between
+      align-items center
+      box-sizing border-box
+      padding-right 10px
+      line-height 1.62
+      cursor pointer
+      font-size 13px
+      color #16325c
+      outline none
+      &__text
+        white-space nowrap
+        overflow hidden
+        text-overflow ellipsis
+        max-width 180px
+        display inline-block
+      &__expand-container
+        position relative
+        &.-is-dragging
+          &:before
+            left 10px
+          &:after
+            left 4px
+        &.-expand > .filter
+          font-weight bold
+      &__subfilters-container
+        display none
+        margin-left 10px
+        &.-expand
+          display block
+      &__expand-btn
+        width 12px
+        height 20px
+        position absolute
+        border none
+        background none
+        outline none
+        top 0
+        left -14px
+        cursor pointer
+      &__expand-arrow
+        position absolute
+        top 9px
+        left 2px
+        display block
+        width 9px
+        height 4px
+        transform rotate(-90deg)
+        cursor pointer
+        g
+          fill #ffffff !important
+        &.-expand
+          left 0px
+          transform rotate(0deg)
+      &__counter
+        color #a3afc6
+      &__additional-text
+        margin-left 5px
+        font-size 12px
+        color #c3d4dc
+      &__hide-switch
+        // display none
+        visibility hidden
+        position relative
+        opacity 0.5
+        width 20px
+        height 20px
+        &:before,
+        &:after
+          content ''
+          display block
+          position absolute
+          width 10px
+          height 2px
+          top 40%
+          left 30%
+          background-color #767775
+        &:before
+          transform rotate(-45deg);
+        &:after
+          transform rotate(45deg)
+        &.-show
+          transform-origin center
+          transform rotate(45deg)
+      &__expandable-sub
+        padding-left 20px
+      &.-active
+        font-weight bold
+        color #0070d2
+        .filter__counter
+          font-weight bold
+      // when filter is ready to receive entity via dnd, and we are not inside same group
+      &.-receive-ready:not(.-hovered-over-same-group)
+        transform scale(1.05)
+        color blue
+      &:hover
+        .filter__hide-switch
+          visibility visible
+          top -6px
+          // display block
+  // list body (center)
+  &__body
+    // overflow auto
+    flex-grow 1
+    padding 4px 1px 0 3px
+    overflow-y scroll
+    background #f9fafc
+    .list__dnd-item.-insert-above:after,
+    .list__dnd-item.-insert-below:after
+      left -3px
+  &__container
+    // height 100%
+    border-radius 5px
+    box-shadow 0 2px 4px 0 rgba(0,0,0,0.2)
+    outline none
+  &__item
+    display flex
+    margin-top -1px
+    align-items center
+    box-sizing border-box
+    height 32px
+    padding 5px
+    color #16325c
+    border-bottom 1px solid rgba(216, 221, 230, 0.5)
+    border-top 1px solid transparent
+    background #ffffff
+    cursor pointer
+    background-clip padding-box
+    &-wrapper
+      outline none
+      &:first-child .list__item
+        border-top-left-radius 5px
+        border-top-right-radius 5px
+      &:last-child .list__item
+        border-bottom-left-radius 5px
+        border-bottom-right-radius 5px
+        border-bottom none
+      &:focus
+        .list-item
+          background #f2f8ff
+          border-color #a8cff1
+      // &:last-child
+      //   box-shadow 0 2px 4px 0 rgba(0,0,0,0.2)
+    // &-wrapper:last-child
+    //   box-shadow 0 2px 4px 0 rgba(0,0,0,0.2)
+    .checkbox
+      height 17px
+      padding-left 5px
+      padding-right 20px
+      &__box
+        width 17px
+        height 17px
+        border-radius 50%
+        border 1px solid #a3afc6
+        display flex
+        align-items center
+        justify-content center
+        .checkbox__check
+          position static
+          width 8px !important
+          height 6px !important
+          g
+            fill #a3afc6 !important
+      &.-checked
+        .checkbox__box
+          background #7ec857
+          border-color #7ec857
+          g
+            fill #ffffff !important
+    // conditionals for components inside list item
+    &--selected
+      background #f2f8ff
+      border-color #a8cff1
+    // not used atm
+    &--cursor
+      outline 1px solid #a8cff1
+    &--expired
+      .checkbox__box
+        background rgba(255, 44, 85, 0.3)
+        border-color #ff2c55
+      .due
+        .cell-tooltip
+          color #c23636
+    &--in-progress
+      .checkbox__box
+        background rgba(254, 206, 0, 0.3)
+        border-color #fece00
+    &--done
+      // add here styles for done issue, if any
+    &--closed
+      background #f2f5f9
+      box-shadow inset 0 1px 2px 0 rgba(0, 0, 0, 0.25)
+      color #a3afc6
+      border none
+      .tag
+        color #a3afc6
+        background #eef2f6
+        border-color #a9b2c4
+    &--opened
+      background #c5ddfb
+      border-color #73b5ef
+      box-shadow none
+    .cell-tooltip__cloud
+      background #16325c
+      text-align center
+      padding-top 8px
+      padding-bottom 8px
+      min-width 0
+      &.-down
+        transform translate(-50%, 175%)
+      &.-down:before,
+      &.-up:before
+        border-width 10px 10px 0 10px
+        border-color #16325c transparent transparent transparent
+  .drag-layer__preview
+      width 400px
+      padding 5px
+      opacity 0.5
+      background #f2f8ff
+      border 1px solid #a8cff1
+      border-radius 3px
+  .comments_icon
+    g
+      fill #ffffff !important
+      path
+        stroke #e0e5ee
+    &.-active
+      g
+        fill #f2f8ff !important
+        path
+          stroke rgba(0, 112, 210, 0.3)
+          fill #3a4d70 !important
+
+.list-group
+  &__header
+    display flex
+    justify-content space-between
+    align-items center
+    padding 7px 10px
+    font-size 14px
+    background #F9FCFF
+    border-bottom 1px solid rgba(216,221,230,0.5)
+    .simple-progress__wrapper
+      width 100px
+      height 10px
+    b
+      margin-right 10px
+      cursor pointer
+      &:hover
+        border-bottom 1px solid #16325c
+    &.-parent
+      font-size 16px
+      background white
+      padding-top 10px
+      padding-bottom 10px
+  &__counter
+    color #a3afc6
+
+.list-issues-container
+  &__show-btn
+    padding-top 7px
+    padding-bottom 7px
+    padding-left 10px
+    background white
+    color #0070d2
+    cursor pointer
+    font-size 13px
+
+/**
+    LIST COMPONENTS
+*/
+.item__cell
+  margin-right 10px
+  white-space nowrap
+  font-size 13px
+  &--additional-data
+    margin-left 5px
+    color #c3d4dc
+    font-size 12px
+  &:last-child
+    margin-right 5px
+  &.overflow
+    padding-top 2px
+    padding-bottom 4px
+    overflow hidden
+    text-overflow ellipsis

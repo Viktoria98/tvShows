@@ -1,0 +1,116 @@
+.rangeDatepicker__calendars
+  width 640px
+.rangeDatepicker__calendar,
+.rangeDatepicker__calendars
+  .DateRangePicker
+    width 100%
+    .DateRangePicker__Month
+      margin 0 30px 0 0
+      &~ .DateRangePicker__Month
+        margin-right 0
+      .DateRangePicker__MonthDates
+        border-spacing 0 5px
+        border none
+        .DateRangePicker__WeekdayHeading
+          border none
+          abbr
+            color #878787
+            font-weight normal
+            font-size 14px
+  .DateRangePicker__Date
+    padding 14px 0
+    min-width 40px
+    border none
+    &--weekend
+      background-color transparent
+    &--is-selected
+      background-color #e3f0ff
+      color black
+      &:first-of-type
+        border-radius 4px 0 0 4px
+      &:last-of-type
+        border-radius 0 4px 4px 0
+      &:not(.DateRangePicker__Date--otherMonth)
+        .DateRangePicker__CalendarSelection
+          &--start
+          &--end
+            border-radius 4px !important
+            background-color $brand-color
+            width 25px
+            &:after
+              content ''
+              display block
+              position absolute
+              right 25px
+              width 0
+              height 0
+              border-style solid
+              border-width 20px 0 20px 15px
+              border-color transparent transparent transparent $brand-color
+          &--start
+            border-radius 4px 0 0 4px !important
+            &:after
+              left 25px
+          &--end
+            border-radius 0 4px 4px 0 !important
+            left 15px
+            &:after
+              border-width  20px 15px 20px 0
+              border-color transparent $brand-color transparent transparent
+    &--is-highlighted
+      .DateRangePicker__CalendarHighlight
+        border-radius 50%
+        border 2px solid $brand-color
+        background-color rgba(255, 255, 255, 0.5)
+    &--otherMonth
+      opacity 1
+      color rgba(0, 0, 0, 0.5)
+      .DateRangePicker__DateLabel--startOrEnd
+        color rgba(0, 0, 0, 0.5)
+    &--is-disabled
+      opacity 1
+      color rgba(0, 0, 0, 0.2)
+  .DateRangePicker__CalendarSelection
+    background-color #E3F0FF
+    border none
+    bottom 0
+    top 0
+    right 0
+    left 0
+  .DateRangePicker__DateLabel--startOrEnd
+    color white
+  .DateRangePicker__PaginationArrow
+    background-color #fafafa
+    border-radius 4px
+    width 40px
+    height 40px
+    &--next
+      right 0
+      &--is-disabled
+        cursor default
+    &--previous
+      left 0
+      &--is-disabled
+        cursor default
+  .DateRangePicker__PaginationArrowIcon
+    border-top-width 5px
+    border-bottom-width 5px
+    &--previous
+      border-left-width 5px
+      border-right-width 7px
+      left 10px
+      top 15px
+    &--next
+      border-left-width 7px
+      border-right-width 5px
+      left 18px
+      top 15px
+
+// v2
+.rangeDatepicker__calendar
+  width 320px
+  padding 20px
+  .DateRangePicker
+    .DateRangePicker__Month
+      margin 0
+      width 280px

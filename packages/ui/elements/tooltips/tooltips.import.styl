@@ -1,0 +1,85 @@
+animation = opacity 200ms, transform 200ms
+
+.tooltipsy
+  display inline-block
+  width 100%
+  .trigger
+    display inline-block
+    width 100%
+    &.-pointer
+      cursor pointer
+  .cloud
+    position fixed
+    max-width 400px
+    min-width 120px
+    text-align center
+    padding 20px
+    background $black-transparent
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.37)
+    border-radius 6px
+    color $white
+    font-size 13px
+    opacity 0
+    z-index 99
+    white-space normal
+    .bolded
+      font-weight bold
+    &.-wide
+      padding 5px 20px
+      &.-up
+        transform(translateY(-45px))
+    &.-dropdown
+      font-weight bold
+      &.-up
+        transform(translateY(-22px))
+    &.-visible
+      opacity .95
+      transition(animation)
+    &.-up
+      transform(translateY(-35px))
+      &:before
+        display block
+        @extend .center--x
+        border-width 10px 10px 0 10px
+        border-color $black-transparent transparent transparent transparent
+        bottom -10px
+    &.-right
+      transform(translateX(20px))
+      &:before
+        display block
+        @extend .center--y
+        border-width 10px 10px 10px 0
+        border-color transparent $black-transparent transparent transparent
+        left -10px
+    &.-left
+      transform(translateX(-20px))
+      &:before
+        display block
+        @extend .center--y
+        border-width 10px 0 10px 10px
+        border-color transparent transparent transparent $black-transparent
+        right -10px
+    &:before
+      content ''
+      display none
+      width 0
+      height 0
+      border-style solid
+  .closer
+    &.-visible
+      display block
+    display none
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+    z-index 98
+  .helper
+    &.-visible
+      display block
+    display none
+    font-size 10px
+    text-align right
+    margin-top 10px
+    opacity .3

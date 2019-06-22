@@ -1,0 +1,86 @@
+.labels-container
+  overflow hidden
+  text-overflow ellipsis
+  position relative
+  white-space normal
+  margin-left 10px
+
+.label
+  position relative
+  display inline-block
+  box-sizing border-box
+  margin 2px
+  min-width 20px
+  max-width 100%
+  padding 2px 5px
+  line-height 13px
+  font-size 11px
+  vertical-align middle
+  text-align center
+  border-radius 4px
+  color #004078
+  background #e7f4fd
+  border 1px solid #a7d7f7
+  &.blue
+    color #1d3456
+    background #e7f4fd
+    border-color #a7d7f7
+  &.blue-two
+    color #33578c
+    background #f2f8ff
+    border-color #a8cff1
+  &.cyan
+    color #1f6566
+    background #e5fafb
+    border-color #acf0f2
+  &.gray
+    color #5c6066
+    background #f1f2f3
+    border-color #bec7d3
+  &.green
+    color #266e00
+    background #f2f9ee
+    border-color rgba(126,200,87,0.3)
+  &.orange
+    color #bb833a
+    background #f9eee0
+    border-color #fadab1
+  &.purple
+    color #341f66
+    background #f4f0ff
+    border-color #d8c7ff
+  &.red
+    color #96001d
+    background #ffe9ee
+    border-color rgba(255,44,85,0.3)
+  &.superred
+    color #96001d
+    background #ffcfd6
+    border-color #ff5c7b
+  &.white
+    color #606266
+    background #ffffff
+    border-color #d8dde6
+  &.yellow
+    color #c7b13e
+    background #fefae5
+    border-color #fdeda5
+  &.superyellow
+    color #a99634
+    background #fefae5
+    border-color #f9dd4c
+  &__btn-close
+    margin 5px
+    &:after, &:before
+      position absolute
+      right 6px
+      top 20%
+      content ''
+      height 10px
+      width 2px
+      cursor pointer
+      background-color #767775
+    &:after
+        transform rotate(-45deg)
+    &:before
+        transform rotate(45deg)

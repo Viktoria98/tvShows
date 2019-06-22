@@ -1,0 +1,57 @@
+.radio__group
+  height: 36px;
+  &.-justified
+    width 100%
+    display table
+    table-layout fixed
+    label
+      display table-cell
+      span
+        width 100%
+  &.-error
+    label
+      span
+        border-color #db3500 !important
+  label
+    &.-disabled
+      span
+        opacity .65
+        cursor not-allowed
+    .radio-item
+      position relative
+      box-sizing border-box
+      &__width-placeholder
+        opacity 0
+      &__text
+        position absolute
+        top 0
+        left 50%
+        transform translateX(-50%)
+        font-style normal
+    span
+      padding 0 15px
+      width auto
+      display block
+      float left
+      height 38px
+      line-height 38px
+      text-align center
+      font-family 'Helvetica', 'Arial', sans-serif
+      color #696969
+      background #fafafa
+      border 1px solid #cccccc
+      border-right none
+      cursor pointer
+      box-shadow 0 2px 2px rgba(26, 26, 26, 0.15)
+    &:first-child span
+      border-radius 4px 0 0 4px
+    &:last-child span
+      border-radius 0 4px 4px 0
+      border-right 1px solid #cccccc
+    input
+      display none
+    &.-selected
+      span
+        background white
+        font-weight bold
+        color #222

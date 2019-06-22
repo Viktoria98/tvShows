@@ -1,0 +1,329 @@
+// base
+.dropdown
+  display inline-block
+  position relative
+  font-size 14px
+  &__button
+    box-sizing border-box
+    position relative
+    padding 0 15px
+    min-width 75px
+    height 38px
+    line-height 38px
+    font-family 'Helvetica', 'Arial', sans-serif // font
+    font-size 14px
+    font-weight bold
+    color #696969
+    background #fafafa
+    border 1px solid #cccccc
+    border-radius 4px
+    cursor pointer
+    box-shadow 0 2px 0 rgba(26,26,26,0.15)
+    font-size 14px
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+    width 200px
+    padding-right 30px
+    text-align left
+    &.-disabled
+      .icon
+        &.-reload
+          path
+            fill #a9b2c4
+    &:before
+      content ' '
+      position absolute
+      top 50%
+      transform translateY(-50%)
+      width 0
+      height 0
+      border-style solid
+      border-width 4px 4px 0 4px
+      border-color #cccccc transparent transparent transparent
+      right 10px
+    &.-disabled
+      cursor auto
+      background-color #e8ecf3
+      color #afb4be !important
+      &:before
+        content none
+  &__close
+    display none
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+    z-index 99
+    &.-visible
+      display block
+  &__container
+    display none
+    position absolute
+    overflow hidden
+    min-width 100%
+    top 0
+    background white
+    border 1px solid #cccccc
+    border-radius 4px
+    z-index 99
+    padding 5px 0
+    &.-visible
+      display block
+      box-shadow 0 2px 8px 0 rgba(0, 0, 0, 0.25)
+    &.-right
+      right 0
+    hr
+      border 1px solid #D8DDE6
+  &__scroll
+    overflow-y auto
+    &::-webkit-scrollbar
+      width 6px
+      height 6px
+    &::-webkit-scrollbar-track
+      background-color whitesmoke
+    &::-webkit-scrollbar-thumb
+      background-color #666666
+      border-radius 6px
+  &__input
+    position absolute
+    opacity 0
+    left 0
+    z-index -1
+  .divider
+    border-bottom 1px solid #d8dde6
+    list-style-type none
+// dropdown item
+.dropdown__list__item
+  display block
+  box-sizing border-box
+  position relative
+  height 34px
+  padding 9px 50px 9px 15px
+  color #696969
+  white-space nowrap
+  overflow hidden
+  cursor pointer
+  &:hover
+    background #1d81e2
+    color white
+  &.-disabled
+    color #e4e4e4
+    cursor auto
+    &:hover
+      color #e4e4e4
+      background-color transparent
+  &.-active
+    font-weight bold
+    color #1d81e2
+    padding-right 40px
+    text-overflow ellipsis
+    white-space nowrap
+    overflow hidden
+    .icon
+      position absolute
+      right 5px
+      top 6px
+      width 15px
+      height 15px
+      g
+        fill #1d81e2
+    &:hover
+      color white
+      .icon g
+        fill white
+    // &:after
+    //   content ' '
+    //   position absolute
+    //   z-index 10
+    //   width 15px
+    //   height 15px
+    //   right 10px
+    //   top 6px
+    //   background-image url('/packages/ff_ui/assets/images/check.svg')
+    //   background-repeat no-repeat
+    //   background-position center
+    //   background-size contain
+    // &:hover:after
+    //   background-image url('/packages/ff_ui/assets/images/check-white.svg')
+  &.-left-checkmark
+    padding-left 40px
+    .icon
+      right initial
+      left 16px
+
+// dropdown checkbox item
+.dropdown__checkbox-item
+  display flex
+  align-items center
+  box-sizing border-box
+  height 34px
+  padding 9px 50px 9px 15px
+  color #696969
+  white-space nowrap
+  overflow hidden
+  cursor pointer
+  .checkbox
+    margin-right 8px
+  &:hover
+    color #1d81e2
+
+// select dropdown
+.dropdown.select
+  .dropdown
+    &__container
+      padding-right 5px
+// multiselect dropdown
+.dropdown.multiselect
+  .dropdown
+    &__container
+      padding-right 10px
+    &__list
+      &__group
+        &:not(:last-child)
+          border-bottom 1px solid #cccccc
+          padding-bottom 5px
+          margin-bottom 5px
+      &__item
+        box-sizing border-box
+        position relative
+        height 34px
+        padding 9px 50px 9px 15px
+        color #696969
+        white-space nowrap
+        overflow hidden
+        &.-disabled
+          color #e4e4e4
+          &:hover
+            color #e4e4e4
+            background-color transparent
+        &.-active
+          font-weight bold
+          color #1d81e2
+          padding-right 40px
+          text-overflow ellipsis
+          white-space nowrap
+          overflow hidden
+          &:before
+            content ' '
+            position absolute
+            width 15px
+            height 15px
+            right 10px
+            top 6px
+            // background-image url('/packages/ff_ui/assets/images/check.svg')
+            background-repeat no-repeat
+            background-position center
+            background-size contain
+          &:hover:before
+            // background-image url('/packages/ff_ui/assets/images/check-white.svg')
+        &:hover
+          background #1d81e2
+          color white
+          cursor pointer
+        &__counter
+          color #c3c3c3
+          font-size 13px
+          .fake
+            margin-left 20px
+            opacity 0
+          .real
+            position absolute
+            right 40px
+// datepicker
+.dropdown.datepicker
+  .dropdown
+    &__container
+      padding 0
+      top 50px
+      overflow visible
+      &:before
+        content ''
+        display block
+        position absolute
+        width 10px
+        height 10px
+        right 30px
+        top -6px
+        background-color #ffffff
+        border 1px solid #ccc
+        border-bottom-color transparent
+        border-left-color transparent
+        -ms-transform rotate(-45deg)
+        -webkit-transform rotate(-45deg)
+        -webkit-transform rotate(-45deg)
+        -moz-transform rotate(-45deg)
+        transform rotate(-45deg)
+      .rangeDatepicker
+        border 0
+// range datepicker
+.dropdown.rangeDatepicker
+  .dropdown__button
+    width auto
+// inline (link) dropdown
+.dropdown.inline
+  display inline-block
+  width auto
+  .dropdown
+    &__button
+      display inline
+      padding 0
+      border none
+      box-shadow none
+      background-color transparent
+      height auto
+      line-height 1.2em
+      width auto
+      position relative
+      overflow visible
+      transition color .2s ease
+      text-decoration underline
+      &:before
+        right -10px
+// filter
+.dropdown.filter
+  .dropdown__container
+    max-width 430px
+
+// classic dropdown for now used only in FF admin dashboard
+.dropdown.classic
+  .dropdown
+    &__button
+      text-transform uppercase
+      padding 0
+      padding-right 15px
+      border none
+      box-shadow none
+      background-color transparent
+      text-overflow ellipsis
+      height auto
+      line-height 1.2em
+      width auto
+      position relative
+      transition color .2s ease
+      &:before
+        right 5px
+    &__container
+      position absolute
+      top calc(100% + 10px)
+      right -19px
+      overflow visible
+      &:before
+        content ""
+        width 10px
+        height 10px
+        background white
+        position absolute
+        top -7px
+        right 20px
+        transform rotate(45deg)
+        border-radius 3px
+        border 1px solid #cccccc
+        border-bottom-color transparent
+        border-right-color transparent
+    &__list__item
+      text-transform none
+      color #878787
+      &:hover
+        color white

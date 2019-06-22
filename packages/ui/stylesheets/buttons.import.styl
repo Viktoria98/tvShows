@@ -1,0 +1,62 @@
+// use v2 instead
+.button
+  height $button-height
+  line-height $button-height
+  padding 0 15px
+  font-family 'Helvetica', 'Arial', sans-serif
+  font-size 14px
+  font-weight bold
+  color $gray-dark
+  background $gray-lightest
+  border $border
+  border-radius $border-radius
+  cursor pointer
+  box-shadow 0 2px 0 $black-shadow
+  &:hover, &:focus
+    background-color lighten($gray-lightest, 20%)
+  &.-primary
+    background $brand-color
+    text-transform uppercase
+    color $white
+    border 1px solid $blue-dark
+    box-shadow 0 2px 0 $brand-shadow
+    &:hover, &:focus
+      background-color lighten($brand-color, 20%)
+    &:disabled
+      box-shadow 0 2px 0 $black-shadow
+      color $gray-light
+      background $gray-lightest
+      border-color $gray
+      &:hover, &:focus
+        background $gray-lightest
+  &.-ghost
+    font-family 'Helvetica', 'Arial', sans-serif
+    font-weight normal
+    background transparent
+    box-shadow none
+    &:hover, &:focus
+      border-color lighten($gray, 20%)
+  &.-editor
+    text-transform uppercase
+    border-color #1f7ce4
+    color #1f7ce4
+    box-shadow: 0 2px 0 0 rgba(30, 124, 228, 0.19);
+    &:hover, &:focus
+      border-color darken(#1f7ce4, 20%)
+  &.-graph
+    width 75px
+    padding 0
+    &:before
+      display none
+  &.-lightblue
+    background #3c99f0
+    border 1px solid #1663ab
+    box-shadow 0 2px 0px rgba(22, 98, 173, 0.45)
+  &:focus
+    outline none
+  &:disabled
+    color $gray-light
+    background $gray-lightest
+    border-color $gray
+    &:hover, &:focus
+      background $gray-lightest

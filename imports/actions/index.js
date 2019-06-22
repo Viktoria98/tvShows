@@ -18,7 +18,6 @@ export function sortByColumn(filter) {
 }
 
 export function search(text) {
-  console.log('search_action ' + text);
   return {
     type: 'SEARCH_ACTION',
     text,

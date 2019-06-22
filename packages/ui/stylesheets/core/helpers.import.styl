@@ -1,0 +1,145 @@
+.pull-left
+  float left
+.pull-right
+  float right
+
+.divider
+  border-bottom $border
+
+.arrow-down
+  width 0
+  height 0
+  border-style solid
+  border-width 4px 4px 0 4px
+  border-color $gray transparent transparent transparent
+
+.center
+  &--x
+    position absolute
+    left 50%
+    transform translateX(-50%)
+  &--y
+    position absolute
+    top 50%
+    transform translateY(-50%)
+  &--xy
+    position absolute
+    left 50%
+    top 50%
+    transform translate(-50%,-50%)
+
+.stick
+  display block
+  position absolute
+  left 7px
+  width 2px
+  height 15px
+  background $gray-light
+
+.close
+  width 15px
+  height 15px
+  cursor pointer
+  &:before
+    content ' '
+    @extends .stick
+    transform: rotate(-45deg)
+  &:after
+    content ' '
+    @extends .stick
+    transform: rotate(45deg)
+
+@-webkit-keyframes rotation360
+  from
+    -webkit-transform rotate(0deg)
+  to
+    -webkit-transform rotate(360deg)
+@-moz-keyframes rotation360
+  from
+    -moz-transform rotate(0deg)
+  to
+    -moz-transform rotate(360deg)
+@-ms-keyframes rotation360
+  from
+    -ms-transform rotate(0deg)
+  to
+    -ms-transform rotate(360deg)
+.rotate360
+  -webkit-animation-name rotation360
+  -webkit-animation-duration 1s
+  -webkit-animation-iteration-count infinite
+  -webkit-animation-timing-function linear
+  -moz-animation-name rotation360
+  -moz-animation-duration 1s
+  -moz-animation-iteration-count infinite
+  -moz-animation-timing-function linear
+  -ms-animation-name rotation360
+  -ms-animation-duration 1s
+  -ms-animation-iteration-count infinite
+  -ms-animation-timing-function linear
+
+.half
+  float left
+  width 48%
+  margin-right 4%
+  &:nth-child(2n)
+    margin-right 0
+
+.third
+  display inline-block
+  width 31%
+  margin-right 3%
+  &:nth-child(3n)
+    margin-right 0
+
+.third-inline
+  width 33%
+  display inline-block
+
+.fullwide
+  width 100%
+
+.width68
+  width 68%
+
+.align-right
+  text-align right
+
+.align-left
+  text-align left
+
+.no-border
+  border none!important
+
+.underlined
+  text-decoration underline
+
+.grayed
+  color $gray-dark
+
+.blue
+  color $brand-color
+
+.link
+  color $brand-color
+  cursor pointer
+
+.hidden, .-hidden
+  display none !important
+
+.clear
+  &:after
+    content " "
+    display block
+    height 0
+    clear both
+
+.custom-scrollbar
+  &::-webkit-scrollbar
+    width 6px
+    height 6px
+  &::-webkit-scrollbar-track
+    background-color whitesmoke
+  &::-webkit-scrollbar-thumb
+    background-color #666666
+    border-radius 6px

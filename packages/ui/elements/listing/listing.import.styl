@@ -1,0 +1,394 @@
+/*===================================
+  General listing styles
+===================================*/
+.listing-container
+  > h1
+    height 36px
+    clear both
+    margin-bottom 26.5px
+
+.listing-container
+  > h1, h2, h3
+    .counter
+      color: #c3c3c3
+      font-size: 18px
+      font-weight: 500
+
+.listing
+  font-size 13px
+  width auto
+  // to be prefixed
+  display flex
+  flex-direction column
+  position relative
+  min-width 100%
+  margin-bottom: 14px
+  /* general listing styles */
+  &__fade-x
+    content: ''
+    display: block
+    position: absolute
+    right: 0
+    width: 50px
+    height: 100%
+    background: linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0) )
+    z-index: 9
+    pointer-events none
+  &.-noscrollX
+    .listing__fade-x
+      display: none
+  &.-noscrollY
+    .listing__scrollarea
+      margin-right: 0
+  &__scrollarea
+    @extend .custom-scrollbar
+    position relative
+    overflow auto
+    transform translateZ(0)
+    -webkit-transform translateZ(0)
+    margin-right: -15px
+    &::-webkit-scrollbar:vertical
+      width 16px
+    &::-webkit-scrollbar-track:vertical
+    &::-webkit-scrollbar-thumb:vertical
+      border 5px solid white
+      border-radius 16px
+      background-clip content-box
+      min-height 50px
+    &::-webkit-scrollbar:horizontal
+      height 16px
+    &::-webkit-scrollbar-track:horizontal
+    &::-webkit-scrollbar-thumb:horizontal
+      border 5px solid white
+      border-radius 16px
+      background-clip content-box
+  &__header
+    overflow hidden
+    min-width: 100%
+    // to be prefixed
+    display inline-flex
+    flex-direction row
+    flex-shrink 0
+    border-top 1px solid $gray
+    border-bottom 1px solid #eaeaea
+    background-color $listing-header
+    z-index 3
+    top 0
+  &__body
+    // to be prefixed
+    display inline-flex
+    min-width 100%
+    flex-direction column
+  &__item
+    // to be prefixed
+    border-bottom $border-light-new
+    width 100%
+    display flex
+    flex-direction row
+    cursor pointer
+    position relative
+    &:before
+    &:after
+      width 100%
+      height 1px
+      position absolute
+      left 0
+      opacity 0
+      transition(opacity .2s ease)
+      content ''
+      background-color $listing-hover-border
+      top -1px
+      z-index 2
+    &:after
+      top 100%
+    &:nth-child(odd)
+      background-color white
+    &:nth-child(even)
+      background-color #F7FDFF
+    &:hover
+      &:before
+      &:after
+        opacity 1
+      background-color #EBF4FE
+    &.-checked
+      &:before
+      &:after
+        background-color $listing-checked-border
+        opacity 1
+      background-color $yellow-light
+    &.-warning
+      background-color #ffcccc
+      &:before
+      &:after
+        background-color #eb9999
+        opacity 1
+    &.groupName
+      font-weight bold
+      .cell.title
+        margin-right 26px
+  /* widget popup listing */
+  &__widget
+    .listing__item
+      &:last-child
+        .expander
+          top auto
+          bottom 0
+      span.expander
+        bottom auto
+        white-space normal
+        pointer-events none
+    .listing__header
+    .cell
+      align-left()
+
+/*===================================
+ Styles for cells inside selectable table
+===================================*/
+.selectable-listing
+  .-selected-cell
+    background-color #fffecc
+  .cell
+    user-select none
+  .-selectable-text
+    & .cell
+      user-select auto
+  .off-transition
+
+   transition(background-color 1s ease-out !important)
+
+/*===================================
+  General cells styles (wrapped)
+===================================*/
+
+.listing
+  /* cells basic */
+  .cell
+    // to be prefixed
+    display flex
+    align-items: flex-end
+    flex-grow 1
+    flex-basis 0
+    position relative
+    border-right 1px solid $gray-lighter
+    background-color inherit
+    &:last-child
+      border-right none
+  /* header cells */
+  &__header
+    .cell
+      &.checkboxCell
+        flex-grow 0
+        min-width 26px
+        max-width 26px
+        & > .checkbox
+          position relative
+  /* body cells */
+  .cell
+    white-space nowrap
+    padding 0 6px
+    transition(background-color .2s ease)
+    span
+      display inline-block
+      width auto
+      line-height 22px
+    .content
+      &.-wrapper
+        white-space nowrap
+        min-width 0
+        overflow hidden
+        text-overflow ellipsis
+        text-align left
+    &.listingCell .content.-wrapper
+      text-align right
+    .expander
+      width auto
+      background-color $yellow-light
+      position absolute
+      left 0
+      top 0
+      bottom 0
+      z-index 3
+      padding 0 6px
+    .negative
+      color: #B80007
+    .resizer-hor-r
+      position absolute
+      width 6px
+      height 100%
+      z-index 4
+      cursor ew-resize
+      right -3px
+    .hiddenCopyInput
+      position fixed
+      top -99999px
+      left -99999px
+
+/*===================================
+  General cells styles (unwrapped)
+===================================*/
+.listing.-wrap
+  .listing__body
+    .cell
+      line-height 16px !important
+      white-space normal
+      word-break break-word
+      align-items flex-start
+
+/*===================================
+  Individual cells styles (wrapped)
+===================================*/
+.listing
+  // generic listing styles
+  .checkboxOuter
+    flex-grow 0
+    min-width 26px
+    max-width 26px
+  .checkboxOuter
+  .checkboxCell
+    padding 3px 6px 2px 5px
+    label
+      background-size 14px 14px
+      span
+        background-position 3px 1px !important
+        background-size 12px 12px !important
+      svg
+        height 14px !important
+        width 14px !important
+        top 0 !important
+    .checkbox__box
+      width 14px
+      height 14px
+      top 1px
+  .cell
+    for i in (2..60)
+      &.-w{i*10}
+        max-width i*10px !important
+        min-width i*10px !important
+    &.-right
+      align-right()
+    &.-freezed
+      z-index 25
+    &.-expired
+      color red
+  /* `widget */
+  &__widget
+    .order
+      min-width 30px
+      max-width 30px
+    .type
+      min-width 100px
+      max-width 100px
+    .title
+      width auto
+    .website
+      max-width 200px
+
+/*===================================
+  Individual cells styles (unwrapped)
+===================================*/
+.listing.-wrap
+  .url
+    word-break break-all
+  .websiteUrl
+    word-break break-all
+  .doi
+    word-break break-all
+  .added
+    white-space nowrap
+  .cell
+    &.email
+      word-break break-all
+
+/*===================================
+  Labels
+===================================*/
+.listing .label
+  display inline-block
+  padding 1px 5px
+  border-radius 4px
+  border 1px solid rgba(20,149,235,0.3)
+  margin-right 3px
+  background-color #e7f4fd
+  color #004078
+  line-height 13px !important
+  font-size 12px
+  &:last-child
+    margin-right 0px
+  &.green
+    color #266e00
+    background #f2f9ee
+    border-color rgba(126,200,87,0.3)
+  &.red
+    color #96001d
+    background #ffe9ee
+    border-color rgba(255,44,85,0.3)
+  &.priority-1
+    color #cdae01
+    background-color #fffced
+    border-color rgba(251,233,131,0.3)
+  &.priority-2
+    color #bf8c06
+    background-color #fff8e8
+    border-color rgba(250,209,101,0.3)
+  &.priority-3
+    color #a55c00
+    background-color #f9eee0
+    border-color rgba(255,173,70,0.3)
+  &.priority-4
+    color #bf4e1b
+    background-color #f9e6dd
+    border-color rgba(255,117,55,0.3)
+  &.priority-5
+    color #8f1405
+    background-color #fee2de
+    border-color rgba(248,58,34,0.3)
+  &.inactive
+    color #904728
+    background #ffc8af
+
+/*===================================
+  Cell dropdown
+===================================*/
+.cell-dropdown
+  position absolute
+  top 0
+  left 0
+  bottom 0
+  right 0
+  &__content
+    display none
+    position absolute
+    top 100%
+    left 0
+    background white
+    z-index: 100
+    min-width 140px
+    text-align center
+    border 1px solid grey
+    &.-visible
+      display block
+  &__option
+    padding 10px
+    background white
+    &.-selected
+      color red
+  &__btn
+    position relative
+    z-index 50
+    width 100%
+    height 100%
+    padding-left 5px
+    line-height 20px
+    background transparent
+
+  &__close
+    display none
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+    background transparent
+    z-index: 99
+    &.-visible
+      display block

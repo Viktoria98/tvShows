@@ -1,0 +1,37 @@
+.upload-file
+  position relative
+  overflow hidden
+  text-overflow ellipsis
+  &__label
+    display inline-block
+    width 20px
+    height 20px
+    vertical-align middle
+  &__icon
+    position absolute
+    cursor pointer
+  &__button
+    display none
+  &__link
+    display initial !important
+    width initial !important
+  &__spinner
+    text-align center
+  &__progress
+    overflow visible
+    position relative
+    min-height 21px
+    .simple-progress
+      &__wrapper
+        width 90%
+        height 10px
+        position absolute
+        top 50%
+        left 50%
+        transform translate(-50%, -50%)
+  a.link
+    margin-left 25px
+    display block
+    overflow hidden
+    white-space nowrap
+    text-overflow ellipsis

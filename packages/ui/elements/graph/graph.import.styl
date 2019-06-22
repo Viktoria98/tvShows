@@ -1,0 +1,183 @@
+.graphOuterContainer
+  border solid 1px #c7cace
+  border-radius 6px
+  box-shadow inset 0 2px 3px 0 rgba(0, 0, 0, 0.2)
+  padding 40px 0
+  margin-bottom 25px
+  .graphInnerContainer
+    position relative
+    top -20px
+
+.graph
+  max-width 100%
+  .line
+    stroke steelblue
+    stroke-width 2
+    fill none
+    opacity 0.1
+    &.enabled
+      opacity 1
+  .axis
+    shape-rendering crispEdges
+  .x.axis
+    path
+      display none
+    text
+      font-size 12px
+      fill #696969
+      text-transform uppercase
+  .y.axis
+    path, line
+      display none
+    text
+      font-size 13px
+      fill #696969
+  .domain
+    display none
+  .grid
+    .stroke.horizontal
+      stroke #E5E5E5
+      stroke-width 1px
+  .dots
+    .dot
+      stroke steelblue
+      stroke-width 15px
+      stroke-opacity 0
+      fill steelblue
+      cursor pointer
+      &:hover
+        transition(.3s)
+        r 5
+        stroke-opacity 0.1
+
+.graphTooltip
+  display none
+  &.-visible
+    display block
+  &__cloud
+    position absolute
+    padding 20px
+    background $black
+    border-radius 4px
+    box-shadow 0 4px 12px 0 rgba(0, 0, 0, 0.4)
+    color white
+    z-index 5
+    &:before
+      content ''
+      width 0
+      height 0
+      display block
+      @extend .center--x
+      border-width 10px 10px 0 10px
+      border-style solid
+      border-color $black transparent transparent transparent
+      bottom -10px
+  &__date
+    font-size 15px
+    margin-bottom 6px
+    color #cccccc
+    white-space nowrap
+  &__value
+    font-size 18px
+    white-space nowrap
+    .-shifted
+      display block
+  &__closer
+    display none
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+    z-index 4
+    &.-visible
+      display block
+
+//colors
+
+$graph-blue = #207CE4
+$graph-red = #DC3200
+$graph-green = #377900
+$graph-orange = #dd6300
+$graph-purple = #db00c4
+
+.graph .line
+  &.blue
+    stroke $graph-blue
+  &.red
+    stroke $graph-red
+  &.green
+    stroke $graph-green
+  &.orange
+    stroke $graph-orange
+  &.purple
+    stroke $graph-purple
+
+.graph .dots .dot
+  &.blue
+    stroke $graph-blue
+    fill $graph-blue
+  &.red
+    stroke $graph-red
+    fill $graph-red
+  &.green
+    stroke $graph-green
+    fill $graph-green
+  &.orange
+    stroke $graph-orange
+    fill $graph-orange
+  &.purple
+    stroke $graph-purple
+    fill $graph-purple
+
+//legend
+.legend
+  padding-left 20px
+  h3
+    float left
+    margin 0 0 0 30px
+    line-height 30px
+    font-size 18px
+  &__button
+    height 32px
+    line-height 30px
+    margin-right 8px
+    color $gray
+    padding 0 15px
+    border-radius 15px
+    border 1px solid $gray
+    background transparent
+    font-size 14px
+    cursor pointer
+    margin-bottom 20px
+    &:first-letter
+      text-transform capitalize
+    &:focus
+      outline none
+    &.blue
+      border-color $graph-blue
+      color $graph-blue
+      &.active
+        background $graph-blue
+    &.red
+      border-color $graph-red
+      color $graph-red
+      &.active
+        background $graph-red
+    &.green
+      border-color $graph-green
+      color $graph-green
+      &.active
+        background $graph-green
+    &.orange
+      border-color $graph-orange
+      color $graph-orange
+      &.active
+        background $graph-orange
+    &.purple
+      border-color $graph-purple
+      color $graph-purple
+      &.active
+        background $graph-purple
+    &.active
+      color white

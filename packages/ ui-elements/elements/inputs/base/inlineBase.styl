@@ -1,0 +1,34 @@
+.inline-field
+  height 100%
+  padding 0 6px
+  overflow hidden
+  text-overflow ellipsis
+  &__input
+    display none
+    border 2px solid #1ba2e3
+    background-color white
+    position absolute
+    z-index 100
+    padding 0 3px
+    box-sizing border-box
+    outline none
+    cursor text
+    font-size 13px
+    font-family 'sanfranciscodisplay-regular', 'Arial', sans-serif
+  &.-expand
+    overflow visible
+    .inline-field__text
+      position absolute
+      z-index 100
+      top 0px
+      left 1px
+      padding-left 5px
+      padding-right 5px
+      background #fffecc
+  &.-open
+    overflow visible
+    .inline-field__input
+      display block
+    .inline-field__text
+      overflow hidden
+      display block

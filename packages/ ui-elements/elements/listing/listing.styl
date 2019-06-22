@@ -1,0 +1,337 @@
+/**
+*  CORE LISTING STYLES
+*/
+.styledPopup
+ .listing
+    position relative
+    float right
+    overflow hidden
+    border 1px solid #d8dde6
+    border-radius 4px
+    &__body
+      position relative
+      max-width 100%
+      min-height 550px
+      margin 0
+      background #f9f9f9
+    &__item
+      clear left
+      border-bottom 1px solid #d8dde6
+      background white
+      cursor pointer
+      &.-bold
+        font-weight bold
+      &:first-child
+        border-top 0
+    &__item
+    &__header
+      white-space nowrap
+      height auto
+      background-color inherit
+    &__header
+      &__container
+        position relative
+        top 0px
+        background-color #eff1f3
+      &>*:nth-child(n)
+        &:after
+          content 'keyboard_arrow_down'
+          font-family 'Material Icons'
+          font-weight normal
+          position absolute
+          font-size 12px
+      &>*:nth-child(n):empty
+          &:after
+            content ''
+      .cell-header
+        padding 0 6px
+        font-weight bold
+        min-height 24px !important
+        &__text--sortable
+          cursor pointer
+          // this icon is fucked up, i.e. to repaint it we need to apply style to last path element (but not the fitst one)
+          // don't have time to change it atm, so we are going to proceed with this solution for now
+          // feel free to make it better
+          .cell-header__sort-icon path:last-child
+            fill #a9b2c4
+        &--sort-asc,
+        &--sort-desc
+          .cell-header__sort-icon path:last-child
+            fill #16325c
+        &--sort-asc
+          .cell-header__sort-icon
+            transform rotate(180deg)
+        &__sort-icon
+          width 9px
+          height 9px
+          margin-left 3px    
+    &__item
+      text-align left
+      float left
+      border-bottom 1px solid #d8dde6
+      &:first-child
+        margin-top unset
+        border-top unset
+        &:hover
+          margin-top unset
+          border-top unset
+      &>div:nth-child(n):empty, &>div:last-child
+        background-color #f9fafb
+      &:hover
+        &>div:nth-child(n)
+          margin-top unset
+          background-color #ebf4fe !important
+      &:nth-child(even)
+        &>div:nth-child(n)
+          background-color #f9fafb
+        &:hover
+          background-color #ebf4fe
+      &.-selected
+        margin-top -1px
+        background-color #f2f8ff !important
+        border-bottom 1px solid #A4D7F4
+        border-top 1px solid #A4D7F4
+        &:first-child
+          border-top 2px solid #A4D7F4
+
+.listing
+  position relative
+  padding-top 23px
+  overflow hidden
+  font-size 13px
+  &__body
+    position relative
+    max-width 100%
+    margin-right -15px
+    overflow auto
+    min-height 550px
+    background #f9f9f9
+  &__item
+    clear left
+    background white
+    cursor pointer
+    &.-bold
+      font-weight bold
+    &:first-child
+      border-top 0
+  &__item
+  &__header
+    white-space nowrap
+    height 21px
+    background-color inherit
+  &__header
+    &__container
+      position absolute
+      top 1px
+      border-top 1px solid #d8dde6
+      border-bottom 1px solid #d8dde6
+      background-color #eff1f3
+    .cell-header
+      padding 0 6px
+      font-weight bold
+      &__text--sortable
+        cursor pointer
+        // this icon is fucked up, i.e. to repaint it we need to apply style to last path element (but not the fitst one)
+        // don't have time to change it atm, so we are going to proceed with this solution for now
+        // feel free to make it better
+        .cell-header__sort-icon path:last-child
+          fill #a9b2c4
+      &--sort-asc,
+      &--sort-desc
+        .cell-header__sort-icon path:last-child
+          fill #16325c
+      &--sort-asc
+        .cell-header__sort-icon
+          transform rotate(180deg)
+      &__sort-icon
+        width 9px
+        height 9px
+        margin-left 3px
+  &__item
+    float left
+    border-bottom 1px solid #d8dde6
+    &:first-child
+      margin-top -1px
+      border-top 2px solid #d8dde6
+      &:hover
+        margin-top -1px
+        border-top 2px solid #d8dde6
+    &:hover
+      margin-top -1px
+      background-color #ebf4fe
+      border-top 1px solid #bbd7e8
+      border-bottom 1px solid #bbd7e8
+    &:nth-child(even)
+      background-color #f9fafb
+      &:hover
+        background-color #ebf4fe
+    &.-selected
+      margin-top -1px
+      background-color #f2f8ff !important
+      border-bottom 1px solid #A4D7F4
+      border-top 1px solid #A4D7F4
+      &:first-child
+        border-top 2px solid #A4D7F4
+
+
+/**
+    CELLS STYLES
+*/
+
+.listing
+  // regular cell
+  .cell
+    display inline-block
+    line-height 20px
+    height 21px
+    vertical-align top
+    border-right 1px solid #d8dde6
+    box-sizing border-box
+    transition background-color 0.2s ease
+    &__wrapper
+      p
+        display inline // be aware, its temporary, needed for proper render tags inside expander
+    &--expand
+      overflow visible
+      .cell__wrapper
+        position absolute
+        z-index 100
+        top 0px
+        left 1px
+        padding-left 5px
+        padding-right 5px
+        background #fffecc
+    &.--padding
+      padding 0 6px
+    &.--copying
+      background-color #fffecc;
+    // critical for expanders being properly rendered inside cell-tooltip
+    // .cell-tooltip
+    //   display inline
+    .label
+      white-space nowrap
+  // cell header
+  .cell-header
+    overflow visible
+    position relative
+    &__wrapper
+      display flex
+      align-items center
+    &__text
+      overflow hidden
+      text-overflow ellipsis
+    &__resize-marker
+      width 6px
+      height 100%
+      position absolute
+      z-index 10
+      top 0
+      right -3px
+      cursor col-resize
+  &__header
+    .cell
+      font-weight bold
+.text-ellipsis
+  overflow hidden
+  text-overflow ellipsis
+
+
+/**
+    CUSTOMIZING COMPONENTS INSIDE LISTING
+*/
+
+.listing
+  .cell-button
+    cursor pointer
+    color #1d81e2
+    border none
+    width 100%
+    &.-popup
+      height auto
+      width auto
+      cursor pointer
+      margin-left 5px
+      position relative
+      display inline-block
+      box-sizing border-box
+      margin-right 2px
+      min-width 20px
+      max-width 100%
+      padding: 2px 5px
+      line-height 13px
+      font-size 11px
+      vertical-align middle
+      text-align center
+      border-radius 4px
+      color #004078
+      background #e7f4fd
+      border 1px solid rgba(20,149,235,0.3)
+  // system checkbox
+  .checkbox
+    padding-top 3px
+    .checkbox__box
+      width 14px
+      height 14px
+  // link
+  .link-container
+    display inline-block
+    width 100%
+    padding 0 6px
+    box-sizing border-box
+    &.-link
+      text-decoration none
+      color #1d81e2
+    &.-no-padding
+      padding 0
+    &.-initial-width
+      width initial !important
+  // input
+  .editable-field
+    margin-left -6px
+    &.-open
+      margin-right -6px
+    &__text
+      padding 0 6px
+  // base dropdown
+  .dropdown-base
+    &__btn
+      padding-left 6px
+      &--no-chevron
+        padding-right 6px
+    &.-open:after
+      content ''
+      position absolute
+      top -1px
+      left -1px
+      right -1px
+      bottom -1px
+      border 2px solid #1ba2e3
+      z-index 50
+  // feed dropdown
+  .dropdown-feed
+    &__btn-icon-counter
+      top 0
+      font-size 11px
+
+
+/**
+    CUSTOMIZING SPECIFIC COLUMNS INSIDE LISTING
+*/
+.listing
+  .expired
+    .-id
+      color #c23636
+      a
+        color #c23636
+    .-due
+      .dropdown-base__btn-text
+        color #c23636
+  .fixed // issues page, ID column
+    margin-top -1px
+    background #eff1f3
+    border-top 1px solid #d8dde6
+
+  .cell.--locked
+    background-color inherit
+    position relative
+    z-index 9

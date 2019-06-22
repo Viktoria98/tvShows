@@ -1,0 +1,75 @@
+.button
+  position relative
+  min-width 75px
+  height 38px
+  line-height 38px
+  padding 0 15px
+  font-family 'Helvetica', 'Arial', sans-serif
+  font-size 14px
+  font-weight bold
+  color #696969
+  background #fafafa
+  border 1px solid #ccc
+  border-radius 4px
+  cursor pointer
+  box-shadow 0 2px 0 rgba(26,26,26,0.15)
+  &.-primary
+    background #3c99f0
+    border-color #1663ab
+    .icon g
+      fill #fff
+  &.-ghost
+    font-weight bold
+    background transparent
+    box-shadow none
+    &:hover, &:focus
+      border-color lighten($gray, 20%)
+  &.-tooltip
+    padding 0
+    overflow visible
+    .tooltip
+      width 100%
+      height 100%
+      padding 0 20px
+  &.-icon
+    width auto
+    &:before
+      display none
+    .icon
+      position absolute
+      top 50%
+      left 50%
+      transform translate(-50%,-50%)
+  &.-disabled
+    color #999999
+    cursor not-allowed
+    &:hover
+      background-color #fafafa
+      .icon g
+        fill #a4a4a5 !important
+    .icon g
+      fill #a4a4a5
+
+//hovers
+.button
+  &:hover
+    background-color: #fdfdfd
+    .icon g
+      fill $icon-hovered
+  &.-primary
+    &:hover
+      .icon g
+        fill #fff
+  &.shareBtn
+    &:hover
+      .icon g
+        fill none
+        stroke $icon-hovered
+  &.-disabled
+    &:hover
+      .icon g
+        fill #696969
+
+
+
+

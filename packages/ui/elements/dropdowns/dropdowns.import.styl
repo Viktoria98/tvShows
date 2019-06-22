@@ -1,0 +1,290 @@
+// v1
+// general
+.dropdown
+  display inline-block
+  position relative
+  font-size 14px
+  &__link
+    display inline-block
+    max-width 200px
+    overflow hidden
+    white-space nowrap
+    text-overflow ellipsis
+    cursor pointer
+    padding-right 15px
+    &:after
+      @extend .arrow-down
+      @extend .center--y
+      content ''
+      right 0
+      border-top-color $brand-color
+  &__button
+    @extend .button
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+    width 200px
+    padding-right 30px
+    line-height 100%
+    font-size 14px
+    text-align left
+    &.-disabled
+      cursor auto
+      color $gray-light
+    &:before
+      @extend .center--y
+      @extend .arrow-down
+      content ' '
+      right 10px
+  &__inner__button
+    @extend .button
+    min-width 200px
+    text-align center
+    margin 0 auto
+    display block
+  &__searchbar
+    font-size 14px
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+    max-width 250px
+    text-align left
+    padding 6px 15px 6px 15px
+    &.-disabled
+      cursor auto
+      color $gray-light
+    &:before
+      @extend .center--y
+      @extend .arrow-down
+      content ' '
+      right 15px
+  &__close
+    display none
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+    z-index 99
+    &.-visible
+      display block
+  &__list
+    display none
+    position absolute
+    min-width: 100px
+    overflow auto
+    overflow-x hidden
+    top 0
+    background $white
+    border $border
+    border-radius $border-radius
+    z-index 99
+    padding 5px 0
+    &.-visible
+      display block
+      box-shadow(0 1px 8px 0 rgba(0, 0, 0, 0.3))
+    &__group
+      &:not(:last-child)
+        @extend .divider
+        padding-bottom 5px
+        margin-bottom 5px
+      &__scrollsection
+        @extend .custom-scrollbar
+        position relative
+        max-height 220px
+        margin 0 10px 10px 0
+        overflow-x hidden
+        overflow-y auto
+        &__container
+          position relative
+        &__fog
+          position absolute
+          width 20px
+          height 100%
+          top 0
+          right 16px
+          background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%)
+          background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 70%)
+          background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 70%)
+          pointer-events none
+    &__item
+      position relative
+      height 34px
+      padding 9px 50px 9px 15px
+      color $gray-dark
+      white-space nowrap
+      overflow hidden
+      &.-disabled
+        color $gray-light
+        &:hover
+          color $gray-light
+          background-color transparent
+      &.-active
+        font-weight bold
+        color $brand-color
+        padding-right 40px
+        text-overflow ellipsis
+        white-space nowrap
+        overflow hidden
+        &:after
+          content ' '
+          position absolute
+          z-index 10
+          width 15px
+          height 15px
+          right 10px
+          top 6px
+          background-image url('/packages/ff_ui/assets/images/check.svg')
+          background-repeat no-repeat
+          background-position center
+          background-size contain
+        &:hover:after
+          background-image url('/packages/ff_ui/assets/images/check-white.svg')
+      &.-checkboxItem
+        padding 0
+        &:hover
+          background-color $gray-lightest
+          color $brand-color
+        .checkbox
+          width 100%
+          label
+            width 100%
+            padding 4px 30px 4px 15px
+            height auto
+            cursor pointer
+            background-position 15px 6px
+      &:hover
+        background $brand-color
+        color white
+        cursor pointer
+      &__counter
+        color #c3c3c3
+        font-size 13px
+        .fake
+          margin-left 20px
+          opacity 0
+        .real
+          position absolute
+          right 40px
+      &__remover
+        @extends .close
+        display inline-block
+        position relative
+        margin-left 20px
+        top 1px
+      &__text
+        display block
+        position absolute
+    .divider
+      margin 5px 0
+    .form__group
+      padding 5px 15px
+      margin-bottom 5px
+      .form__input
+        height 30px
+        margin-bottom 10px
+      .button
+        width 100%
+    &.-left
+      left 0
+    &.-right
+      right 0
+    hr
+      border-top 1px solid #ccc
+  &__input
+    position absolute
+    opacity 0
+    left 0
+    z-index -1
+  &.-focused
+    background $brand-color
+    color white
+    cursor pointer
+
+// listing header dropdown
+.dropdown.-header
+  .dropdown__link
+    background-color white
+    border-radius 4px
+    padding 5px 40px 5px 15px
+    box-shadow(0px 2px 0px 0px rgba(26,26,26,0.2))
+    min-width 200px
+    white-space inherit
+    &:after
+      right 12px
+      border-color $black transparent transparent transparent
+  .dropdown__list
+    &__item
+      padding 6px 15px
+      white-space nowrap
+      &.-active
+        padding-right 40px
+        &:before
+          width 15px
+          height 15px
+          top 5px
+          background-size contain
+  &.-open
+    .dropdown__link
+      color $brand-color
+      box-shadow(0 1px 8px 0 rgba(0, 0, 0, 0.3))
+    .dropdown__list
+      box-shadow(0 1px 8px 0 rgba(0, 0, 0, 0.3))
+
+// range datepicker
+.dropdown
+  &.-range
+    .dropdown__button
+      width auto
+    .dropdown__container
+      top 45px !important
+      padding 0 !important
+  &__container
+    display none
+    position absolute
+    top 45px
+    background $white
+    border $border
+    border-radius $border-radius
+    z-index 99
+    &.left
+      left 0
+    &.right
+      right 0
+    &.-visible
+      display block
+  &__list
+    &.left
+      left 0
+      margin-left 25px
+    &.right
+      right 0
+      margin-right -10px
+  &__body
+    overflow hidden
+    padding 30px
+
+.dropdown__list__item
+  &.-expandable
+    &:before
+     content ""
+     position absolute
+     z-index 10
+     top 0
+     right 0
+     width 38px
+     height 100%
+     background white
+   &:hover:before
+     background #1d81e2
+  .dropdown__expander
+    display none
+    position absolute
+    top 0
+    left 0
+    padding 9px 15px
+    padding-right 50px
+    background #1d81e2
+    transition(transform 4s 1s linear)
+    &.-visible
+      display block

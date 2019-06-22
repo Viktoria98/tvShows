@@ -1,0 +1,198 @@
+.DayPicker
+  padding 16px 0 8px 0
+
+.DayPicker-wrapper
+  display flex
+  flex-wrap wrap
+  justify-content center
+  position relative;
+  user-select none;
+  flex-direction row
+  padding 14px 0 7px 0
+  outline none
+
+.DayPicker-Month
+  text-align center
+
+.DayPicker-NavBar
+  position absolute
+  left 0
+  right 0
+  position absolute
+  left 11px
+  right 11px
+  top 9px
+  padding 0
+  margin-bottom 26px
+  & button
+    display flex
+    align-items center
+    justify-content center
+    width: 32px
+    height: 32px
+    border-radius 4px
+    background #fafdff
+    border none
+    padding 0
+    cursor pointer
+    &:focus
+      outline none
+    .icon
+      width 8px
+      height 7px
+      g
+        fill none
+    .icon:hover g
+      fill none
+  & button:nth-of-type(2) svg
+    transform rotate(180deg)
+
+.DayPicker-NavButton
+  position absolute
+  width 1.5rem
+  height: 1.5rem
+  background-repeat no-repeat
+  background-position center
+  background-size contain
+  cursor pointer
+
+.DayPicker-NavButton--interactionDisabled
+  display none
+
+.DayPicker-Caption
+  text-align center
+  color #16325c
+  font-weight bold
+  font-size 13px
+  position relative
+  display inline-block
+  select
+    background none
+    font-family 'sanfranciscodisplay-regular', 'Arial', sans-serif
+    font-size 13px
+    font-weight bold
+    color #16325c
+    cursor pointer
+    margin-right 3px
+    border 1px solid #d8dde6
+    box-shadow 2px 3px 5px -1px #d8dde6
+    border-radius 3px
+  select:focus
+    outline none
+
+.DayPicker-Weekdays
+  margin-top 10px
+  display block
+
+.DayPicker-WeekdaysRow
+  display flex
+  abbr
+    text-decoration none
+
+
+.DayPicker-Weekday
+  font-size 13px
+  width 28px
+  height 28px
+  margin-right 4px
+  margin-left 6px
+  padding 0
+  display flex
+  align-items center
+  justify-content center
+  color #c2cbdc
+
+.DayPicker-Week
+  display flex
+
+.DayPicker-Day
+  border none
+  width 28px
+  height 28px
+  margin-right 4px
+  margin-left 6px
+  margin-top 4px
+  color #222222
+  display flex
+  align-items center
+  justify-content center
+  padding 0
+  cursor: pointer
+  &:focus
+    outline none
+
+.DayPicker-WeekNumber
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
+  min-width: 1rem;
+  font-size: 0.75em;
+  cursor: pointer;
+  color: #8b9898;
+
+.DayPicker--interactionDisabled .DayPicker-Day
+  cursor default
+
+
+.DayPicker-Footer
+  display table-caption
+  caption-side bottom
+  padding-top .5rem
+
+.DayPicker-TodayButton
+  border none
+  background-image none
+  background-color transparent
+  box-shadow none
+  cursor pointer
+  color #4A90E2
+  font-size 0.875em
+
+
+/* Default modifiers */
+
+.DayPicker-Day--today
+  color #d0021b
+  font-weight 500
+
+.DayPicker-Day--disabled
+  color #dce0e0
+  cursor default
+  background-color #eff1f1
+  border-radius 50%
+
+
+.DayPicker-Day--outside
+  cursor default
+  color #dce0e0
+
+
+/* Example modifiers */
+
+.DayPicker-Day--sunday
+  background-color: #f7f8f8;
+
+
+.DayPicker-Day--sunday:not(.DayPicker-Day--today)
+  color #dce0e0
+
+
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside)
+  color #FFF
+  background-color #0070d2
+  border-radius 50%
+
+
+/* DayPickerInput */
+
+.DayPickerInput
+  display inline-block
+
+.DayPickerInput-OverlayWrapper
+  position relative
+
+.DayPickerInput-Overlay
+  left 0
+  position absolute
+  background white
+  box-shadow 0 2px 5px rgba(0, 0, 0, .15)

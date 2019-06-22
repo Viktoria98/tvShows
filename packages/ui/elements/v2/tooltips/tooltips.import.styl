@@ -1,0 +1,89 @@
+// v2
+.tooltip
+  display flex
+  justify-content center
+  position relative
+  &:hover
+    .tooltip__cloud
+      opacity 1
+      &.up
+        transform translateY(-20px)
+      &.left
+        transform translateX(-20px)
+  &__cloud
+    transition(all 200ms)
+    pointer-events none
+    position absolute
+    min-width 120px
+    opacity 0
+    padding 20px
+    border-radius 5px
+    background-color rgba(0,0,0,0.87)
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.37)
+    line-height 20px
+    color #fff
+    text-transform none
+    text-align center
+    z-index 99
+    &:before
+      content ''
+      display block
+      position absolute
+      width 0
+      height 0
+      border-style solid
+    // top positioning
+    &.up
+      bottom 100%
+      &:before
+        border-width 10px 10px 0 10px
+        border-color rgba(0,0,0,0.87) transparent transparent transparent
+        top 100%
+        left 50%
+        transform translateX(-50%)
+    // left positioning
+    &.left
+      right 100%
+      &:before
+        border-width 10px 0 10px 10px
+        border-color transparent transparent transparent rgba(0,0,0,0.87)
+        left 100%
+        top 50%
+        transform translateY(-50%)
+&.left
+  flex-direction column
+
+.fixed-tooltip
+    position relative
+    &:hover
+      .fixed-tooltip__cloud
+        &.up
+          transform translate(-50%, -15px)
+    .fixed-tooltip__cloud
+      position fixed
+      z-index 99
+      min-width 120px
+      padding 15px 20px
+      pointer-events none
+      border-radius 5px
+      background-color rgba(0,0,0,0.87)
+      line-height 20px
+      color #fff
+      opacity 0
+      text-transform none
+      transition(all 200ms ease-in-out)
+      &:before
+        content ''
+        display block
+        position absolute
+        width 0
+        height 0
+        border-style solid
+      &.up
+        transform translate(-50%, 0)
+        &:before
+          border-width 10px 10px 0 10px
+          border-color rgba(0,0,0,0.87) transparent transparent transparent
+          top 100%
+          left 50%
+          transform translateX(-50%)

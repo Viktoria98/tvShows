@@ -1,0 +1,374 @@
+// v2
+// autosuggestions plugin
+
+.v2-autocomplete
+  .react-autosuggest
+    &__container
+      position relative
+      z-index auto
+      .-expandable
+        .react-autosuggest__suggestions-container
+          width 500px
+          transition(width 500ms ease-out)
+      .dropdown
+        &__button
+          width 95px
+          height 42px
+          margin-right 25px
+          font-size 14px
+          color #666666
+          font-weight normal
+          box-shadow none
+        &__container
+          width 120%
+          top 99%
+          left -20%
+          overflow visible
+          &:before
+            content ""
+            width 10px
+            height 10px
+            background white
+            position absolute
+            top -7px
+            right 30px
+            transform rotate(45deg)
+            border-radius 3px
+            border 1px solid #cccccc
+            border-bottom-color transparent
+            border-right-color transparent
+        &__scroll
+          margin-right 10px
+          &::-webkit-scrollbar-track
+            margin-top 6px
+            margin-bottom 6px
+            border-radius 6px
+      .react-autosuggest__suggestions-container
+        .react-autosuggest__footer
+          span
+            width: auto
+            white-space: nowrap
+            overflow: hidden
+            text-overflow: ellipsis
+        display none
+      &--open
+        .react-autosuggest__suggestions-container
+          display block
+        .react-autosuggest__input
+          border-color $brand-color
+    &__input
+      @extend .searchbar__input
+    &__suggestions-container
+      position absolute
+      z-index 5
+      width 330px
+      overflow visible
+      margin-top 15px
+      background white
+      border 1px solid #ccc
+      border-radius 6px
+      box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
+      transition(width 300ms ease-in)
+      &:before
+        content ""
+        width 10px
+        height 10px
+        position absolute
+        top -7px
+        left 22px
+        background white
+        transform rotate(45deg)
+        border-radius 3px
+        border 1px solid #cccccc
+        border-bottom-color transparent
+        border-right-color transparent
+      .no-results
+        padding 15px 22px
+        &__title
+          display block
+          margin-bottom 5px
+          font-size 14px
+        &__descr
+          margin 0
+          font-size 13px
+          line-height 1.38
+          color #ccc
+    &__section-container
+      border-bottom 1px solid #cecece
+    &__section-title
+      margin-right 18px
+      position relative
+      .placeholder
+        opacity 0
+        line-height 50px
+        white-space nowrap
+      .searchbarTrigger
+        position absolute
+        top 0
+        left 50%
+        transform translateX(-50%)
+        display block
+        padding 0
+        background-color transparent
+        border-bottom none
+        font-weight normal
+        color #1f7ce4
+        cursor pointer
+        text-align center
+        white-space nowrap
+        &:before
+          display none
+        &.-active
+          font-weight bold
+    &__suggestions-list
+      @extend .custom-scrollbar
+      max-height 215px
+      width 96%
+      overflow-y auto
+      overflow-x hidden
+      &::-webkit-scrollbar-track
+        margin-top 10px
+        margin-bottom 10px
+        border-radius 6px
+      .react-autosuggest__suggestion--focused.react-autosuggest__suggestion--focused-bg
+        background-color $brand-color
+        color white
+    &__suggestion
+      cursor pointer
+      color #666666
+      .fixed-tooltip__cloud
+        max-width 510px
+      .tooltip__title
+        max-width 470px
+        margin-bottom 10px
+        white-space normal
+        overflow hidden
+        text-overflow ellipsis
+        font-weight bold
+        text-align left
+        &:last-child
+          margin-bottom 0
+          text-align center
+      .tooltip__subtitle
+        max-width 470px
+        margin-top -10px
+        margin-bottom 10px
+        white-space normal
+        word-wrap break-word
+        word-break break-all
+        overflow hidden
+        text-align left
+        &:last-child
+          margin-bottom 0
+          text-align center
+      .tooltip__row
+        display flex
+      .tooltip__row-el
+        flex-shrink 1
+        &--title
+          min-width 100px
+          max-width 100px
+        &--value
+          white-space nowrap
+          overflow hidden
+          text-overflow ellipsis
+      &:hover
+        background-color $brand-color
+        color white
+      .link
+        padding 10px 0
+        border-bottom 1px solid #ccc
+      .item
+        position relative
+        padding 0 15px
+        padding-left 22px
+        line-height 36px
+        .name
+          overflow hidden
+          white-space nowrap
+          text-overflow ellipsis
+        .value
+          font-size 13px
+          color #ccc
+    &__titles-container
+      position relative
+      height 51px
+      display flex
+      justify-content space-between
+      align-items center
+      padding-left 22px
+      padding-right 22px
+      border-bottom 1px solid #e7e7e7
+      .titles
+        display flex
+      &.-loading
+        .react-autosuggest__section-title
+          .title-loading
+            position absolute
+            top calc(50% - 3px)
+            width 100%
+            height 7px
+            background #eaeaea
+            border-radius 2px
+            animation-iteration-count infinite
+            transform-origin left
+          &:nth-child(1)
+            .title-loading
+              transform scaleX(0.1)
+              animation-name grow
+              animation-duration 5s
+          &:nth-child(2)
+            .title-loading
+              transform scaleX(0.3)
+              animation-name grow
+              animation-duration 9s
+          &:nth-child(3)
+            .title-loading
+              transform scaleX(0.2)
+              animation-name grow
+              animation-duration 7s
+          &:nth-child(4)
+            .title-loading
+              transform scaleX(0.45)
+              animation-name grow
+              animation-duration 6s
+    &__tools-btn
+      position absolute
+      width 15px
+      height 15px
+      top 50%
+      right 20px
+      transform translateY(-50%)
+      background none
+      border none
+      cursor pointer
+      &.-loading
+        pointer-events none
+      &.-loading .icon g,
+      &[disabled] .icon g
+          fill #cccccc
+      .tooltip
+        position absolute
+        top 0
+        left 0
+        right 0
+        bottom 0
+      &.-active
+        .icon g
+          fill #1f7ce4
+    &__search-tools
+      display none
+      padding 0 22px
+      border-bottom 1px solid #e7e7e7
+      margin-bottom -1px
+      &.-active
+        display block
+      .dropdown.select
+        button
+          background none
+          border none
+          padding 0
+          width auto
+          min-width auto
+          padding-right 22px
+      .dropdown__container
+        width auto
+        left calc(100% - 80px)
+        &:before
+          right auto
+          left 35px
+    &__lists-container
+      position relative
+      min-height 0px
+      border-bottom 1px solid #e7e7e7
+      &.-loading
+        min-height 200px
+    &__footer
+      padding 13px 22px
+      min-height 57px
+      color #1f7ce4
+      span
+        display block
+    &__footer-advice
+      color #cccccc
+      font-size 13px
+    &__input-btn
+      position absolute
+      top calc(50% - 7px)
+      right 13px
+      width 15px
+      height 15px
+      background white
+      cursor pointer
+      &:before,
+      &:after
+        content ""
+        width 2px
+        height 15px
+        position absolute
+        top 0
+        left 6px
+        background #1e7de5
+      &:before
+        transform rotate(45deg)
+      &:after
+        transform rotate(-45deg)
+    &__loading-lists
+      display flex
+      flex-direction column
+      justify-content space-around
+      position absolute
+      top 0
+      left 0
+      right 0
+      bottom 0
+      padding 0 22px
+      .animated-line
+        width 100%
+        height 7px
+        border-radius 2px
+        background #eaeaea
+        transform-origin left
+        animation-iteration-count infinite
+        &:nth-child(1)
+          transform scaleX(0.95) // 190px
+          animation-name shrink
+          animation-duration 20s
+        &:nth-child(2)
+          transform scaleX(0.75) // 153px
+          animation-name shrink
+          animation-duration 17s
+        &:nth-child(3)
+          transform scaleX(0.23)// 48px
+          animation-name grow
+          animation-duration 15s
+        &:nth-child(4)
+          transform scaleX(0.52) // 104px
+          animation-name shrink
+          animation-duration 23s
+        &:nth-child(5)
+          transform scaleX(0.42) // 82px
+          animation-name grow
+          animation-duration 12s
+        &:nth-child(6)
+          transform scaleX(0.47) // 143px
+          animation-name shrink
+          animation-duration 10s
+
+@keyframes grow {
+  40% {
+    transform scaleX(1)
+  }
+  85% {
+    transform scaleX(0.5)
+  }
+}
+
+@keyframes shrink {
+  40%{
+    transform scaleX(0.1)
+  }
+  85% {
+    transform scaleX(0.5)
+  }
+}

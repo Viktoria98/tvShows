@@ -1,0 +1,35 @@
+// v2
+.checkbox
+  display inline-block
+  cursor pointer
+  &__box
+    display inline-block
+    position relative
+    width 16px
+    height 16px
+    border-radius 3px
+    border 1px solid #D5D5D5
+    background-color #fff
+    &.-focused
+      box-shadow(0px, 0px, 3px, 0px, rgba(29,129,226,1))
+  &__check
+    position absolute
+    width 14px !important
+    height 14px !important
+    bottom 1px
+    left 2px
+    g
+      fill $icon-hovered !important
+  &__label
+    display block
+    float right !important
+    margin-left 9px
+  &__input
+    position absolute
+    opacity 0
+    left 0
+    z-index -1
+
+.checkbox--selectAll-partial
+  g
+    fill #696969 !important

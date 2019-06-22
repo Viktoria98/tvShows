@@ -1,0 +1,6 @@
+[submodule "packages/ui"]
+	path = packages/ui
+	url = git@g.fireflylabs.co:firefly/alan-serenity-template.git
+[submodule "packages/ui-elements"]
+	path = packages/ui-elements
+	url =  git@g.fireflylabs.co:firefly/alan-serenity-redux.git

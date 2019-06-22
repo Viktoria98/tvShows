@@ -1,0 +1,190 @@
+// *
+//   box-sizing border-box
+
+.tooltip
+  display inline-block
+  position relative
+  box-sizing border-box
+  border-bottom none !important
+  &:hover
+    .tooltip__cloud
+      opacity 1
+      &.up
+        transform translate(-50%, -20px)
+      &.left
+        transform translate(-20px, -50%)
+  &__cloud
+    z-index 99
+    position absolute
+    min-width 120px
+    opacity 0
+    padding 20px
+    border-radius 5px
+    background-color rgba(0,0,0,0.87)
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.37)
+    line-height 20px
+    color #fff
+    text-transform none
+    text-align center
+    transition all 200ms
+    pointer-events none
+    box-sizing border-box
+    &:before
+      content ''
+      display block
+      position absolute
+      width 0
+      height 0
+      border-style solid
+    // top positioning
+    &.up
+      bottom 100%
+      transform translate(-50%, 0)
+      left 50%
+      &:before
+        border-width 10px 10px 0 10px
+        border-color rgba(0,0,0,0.87) transparent transparent transparent
+        top 100%
+        left 50%
+        transform translateX(-50%)
+    &.down
+      bottom 100%
+      transform: translate(-50%, 113%);
+      left 50%
+      &:before
+        border-width 10px 10px 0 10px
+        border-color rgba(0,0,0,0.87) transparent transparent transparent
+        bottom 99.6%
+        left 50%
+        transform rotate(180deg) translateX(50%)
+    // left positioning
+    &.left
+      right 100%
+      transform translate(0, -50%)
+      top 50%
+      &:before
+        border-width 10px 0 10px 10px
+        border-color transparent transparent transparent rgba(0,0,0,0.87)
+        left 100%
+        top 50%
+        transform translateY(-50%)
+
+.cell-tooltip
+  // position relative
+  &__wrap
+    position relative
+    &.--hide
+      overflow hidden
+  &__cloud
+    position absolute
+    z-index 99
+    box-sizing border-box
+    padding 15px 20px
+    pointer-events none
+    border-radius 5px
+    background-color rgba(0,0,0,0.87)
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.37)
+    line-height 20px
+    color #fff
+    text-align left
+    white-space normal
+    word-wrap break-word
+    &.--hide
+      opacity 0
+    &:before
+      content ''
+      display block
+      position absolute
+      width 0
+      height 0
+      border-style solid
+    &.-up:before,
+    &.-down:before
+      left calc(50% - 10px)
+    // top positioning
+    &.-up
+      &:before
+        border-width 10px 10px 0 10px
+        border-color rgba(0,0,0,0.87) transparent transparent transparent
+        top 100%
+    // bottom positioning
+    &.-down
+      &:before
+        border-width 10px 10px 0 10px
+        border-color rgba(0,0,0,0.87) transparent transparent transparent
+        bottom 99.6%
+        transform rotate(180deg)
+    &.-left
+      &:before
+        left initial
+        right 5px
+    &.-right
+      &:before
+        left 5px
+        right initial
+
+.fixed-tooltip
+    position relative
+    &.cell-tooltip
+      cursor pointer
+      overflow hidden
+      text-overflow ellipsis
+      .fixed-tooltip__cloud
+        text-align center
+    &:hover
+      .fixed-tooltip__cloud
+        &.up
+          opacity 1
+          transform translate(-50%, -15px)
+        &.down
+          opacity 1
+          transform translate(-50%, 15px)
+    .fixed-tooltip__cloud
+      position fixed
+      z-index 99
+      min-width 120px
+      padding 15px 20px
+      pointer-events none
+      border-radius 5px
+      background-color rgba(0,0,0,0.87)
+      line-height 20px
+      color #fff
+      opacity 0
+      text-transform none
+      transition all 200ms ease-in-out
+      text-align center
+      font-weight normal
+      &:before
+        content ''
+        display block
+        position absolute
+        width 0
+        height 0
+        border-style solid
+      &.up
+        transform translate(-50%, 0)
+        &:before
+          border-width 10px 10px 0 10px
+          border-color rgba(0,0,0,0.87) transparent transparent transparent
+          top 100%
+          left 50%
+          transform translateX(-50%)
+      &.down
+        transform translate(-50%, 0)
+        &:before
+          border-width 0 10px 10px 10px
+          border-color transparent transparent rgba(0,0,0,0.87) transparent
+          bottom 100%
+          left 50%
+          transform translateX(-50%)
+
+.date-tooltip
+  width 270px
+  .date-zone
+    margin 2px 0
+    float left
+    clear right
+  .date-time
+    margin 2px 0
+    float right
+    text-align right

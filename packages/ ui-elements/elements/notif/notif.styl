@@ -1,0 +1,37 @@
+.notification
+  position fixed
+  left 50%
+  transform translateX(-50%)
+  display none
+  padding 10px 20px
+  top 12px
+  min-width 110px
+  line-height 14px
+  text-align center
+  font-size 12px
+  font-family Helvetica
+  font-weight 700
+  color #cba001
+  letter-spacing 0.2px
+  background-color #fdfce5
+  border 1px solid #cba001
+  border-radius 4px
+  z-index 999
+  &.-visible
+    display block
+  &.-alert
+    background-color #fef1f1
+    border-color #d46d6d
+    color #d46d6d
+  &.-error
+    background-color #fef1f1
+    border-color #d46d6d
+    color #d46d6d
+  &.-info
+    background-color #e9f4fd
+    border-color #2898f0
+    color #2898f0
+  &.-success
+    background-color #e8f7ed
+    border-color #30b661
+    color #30b661

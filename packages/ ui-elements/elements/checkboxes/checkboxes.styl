@@ -1,0 +1,37 @@
+.checkbox
+  position relative
+  display inline-block
+  cursor pointer
+  &.-checked .checkbox__box
+    background #f2f8ff
+    border none
+  &__box
+    display inline-block
+    box-sizing border-box
+    position relative
+    width 16px
+    height 16px
+    border-radius 3px
+    border 1px solid #a3afc6
+    background-color #fff
+    &.-focused
+      box-shadow 0px, 0px, 3px, 0px, rgba(29,129,226,1)
+  &__check
+    position absolute
+    //bottom 1px
+    //left 2px
+    bottom 0px
+    left 0px
+    width 14px !important
+    height 14px !important
+    g
+      fill #0B83E3
+  &__label
+    display block
+    float right !important
+    margin-left 9px
+  &__input
+    position absolute
+    left 0
+    z-index -1
+    opacity 0

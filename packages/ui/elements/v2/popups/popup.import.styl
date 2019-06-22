@@ -1,0 +1,63 @@
+// popup v2 styles
+.popup
+  display none
+  align-items center
+  justify-content center
+  &--active
+    display flex
+  &__overlay
+    position fixed
+    top 0
+    right 0
+    left 0
+    bottom 0
+    background-color rgba(0, 0, 0, 0.6)
+  &__body
+    min-width 480px
+    position fixed
+    background white
+    border-radius 6px
+  &__title
+    margin 0
+    margin-bottom 20px
+    font-size 24px
+  &__content-box
+    margin-bottom 20px
+  &__close-btn
+    position absolute
+    top 16px
+    right 16px
+    width 21px
+    height 21px
+    background white
+    cursor pointer
+    &:before,
+    &:after
+      content ""
+      width 15px
+      height 2px
+      position absolute
+      top 9px
+      left 3px
+      background #cccccc
+    &:before
+      transform rotate(45deg)
+    &:after
+      transform rotate(-45deg)
+  &.new-popup
+    .popup__body
+      padding 110px 30px 40px 30px
+      background #F7F8FA
+      color #16325c
+    .popup__title
+      position absolute
+      width 100%
+      height 60px
+      top 0
+      left 0
+      padding 20px 30px
+      font-size 18px
+      border-bottom 1px solid #d8dde6
+      background white
+    .popup__close-btn
+      top 19px

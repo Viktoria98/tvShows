@@ -1,0 +1,31 @@
+.inline-toolbar-button-wrapper {
+    display: inline-block;
+}
+
+.inline-toolbar-button {
+    color: #888;
+    font-size: 18px;
+    border: 0;
+    padding-top: 5px;
+    vertical-align: bottom;
+    height: 34px;
+    width: 36px;
+}
+
+.inline-toolbar-button svg {
+    fill: #888;
+}
+
+.inline-toolbar-button:hover, .inline-toolbar-button:focus {
+    background: #f3f3f3;
+    outline: 0;
+ /* reset for :focus */
+}
+
+.active {
+    color: #444;
+}
+
+.active svg {
+    fill: #444;
+}

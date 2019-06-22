@@ -16,9 +16,7 @@ const myHeaders = new Headers({
 
 
 if (Meteor.isServer) {
-  Meteor.publish('films', function filmsPublication() {
-    return Films.find();
-  });
+  Meteor.publish('films', () => Films.find());
 }
 
 Meteor.methods({

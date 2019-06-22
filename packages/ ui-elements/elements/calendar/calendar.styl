@@ -1,0 +1,266 @@
+/** variables for grid elements
+  block -- block (square) in calendar body
+  header -- block (rectangle) in calendar header
+**/
+$block-width = 150px
+$block-height = 150px
+$header-width = $block-width
+$header-height = 30px
+
+$block-border-color = #eeeff2
+$today-horizontal-border-color = rgba(20,149,235,0.3)
+$today-vertical-border-color = #dde5f0
+$header-background = #f9f8fd
+
+$task-resizer-background = grey
+
+
+.calendar
+  overflow hidden
+  position relative
+  // padding-top $header-height
+  &__header
+    // position absolute
+    // top 0
+    // display flex
+    margin-left $header-width
+    margin-right 12px // scrollbar width
+    overflow hidden
+    font-weight bold
+    .date
+      width $header-width
+      height $header-height
+      line-height $header-height
+      box-sizing border-box
+      text-align center
+      background $header-background
+      border 1px solid $block-border-color
+      &.-today
+        color #0070d2
+        background #f0f7ff
+        border-color $today-horizontal-border-color
+        border-bottom-color $today-vertical-border-color
+      &.-past
+        color #afafaf
+      // &.-future
+      //   color green
+  &__body
+    overflow auto
+    margin-left 150px
+  &__corner
+    position absolute
+    top 0
+    left 0
+    width $header-width
+    height $header-height
+    background $header-background
+    border 1px solid $bblock-border-color
+    box-sizing border-box
+  &__task
+    position absolute
+    top 10px
+    height 20px
+    line-height 20px
+    padding 0 5px
+    box-sizing border-box
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+    background #d2eebd
+    border-radius 20px
+    font-size 14px
+    transition top 0.3s
+    &.-start-out-of-range
+      border-top-left-radius 0
+      border-bottom-left-radius 0
+    &.-end-out-of-range
+      border-top-right-radius 0
+      border-bottom-right-radius 0
+  &__task-resizer
+    position absolute
+    top 0px
+    right 10px
+    width 10px
+    height 20px
+    cursor col-resize
+    &:before
+      content ''
+      position absolute
+      top 4px
+      left 50%
+      transform translateX(-50%)
+      width 3px
+      height 3px
+      background $task-resizer-background
+      border-radius 50%
+      box-shadow 0 4px 0 0 $task-resizer-background, 0 8px 0 0 $task-resizer-background
+  &__task-preview
+    width 200px
+    height 20px
+    line-height 20px
+    background #d2eebd
+    border-radius 20px
+    text-align center
+    font-size 14px
+    text-overflow ellipsis
+    overflow hidden
+
+
+
+.timeline
+  &__assignees-list
+    position absolute
+    top 0
+    left 0
+    padding-top $header-height
+    text-align center
+    margin-top $header-height
+    .assignee
+      width $block-width
+      height $block-height
+      display flex
+      justify-content center
+      align-items center
+      // background lightgreen
+      border 1px solid $block-border-color
+      box-sizing border-box
+  &__rows-list
+    // margin-left $block-width
+    position relative
+    overflow auto
+    box-sizing border-box
+    font-size 0 // hack to prevent spaces between inline elements (.row)
+    .row
+      // display inline-flex
+      display flex
+      position relative
+      box-sizing border-box
+      text-align center
+      font-size 10px
+      .block
+        // background lightblue
+        width $block-width
+        height $block-height
+        box-sizing border-box
+        border 1px solid $block-border-color
+        background white
+        &.-today
+          background #f7faff
+          border-left-color $today-horizontal-border-color
+          border-right-color $today-horizontal-border-color
+          border-bottom-color $today-vertical-border-color
+          border-top-color $today-vertical-border-color
+        &.-highlight
+          background #f8fbd0
+          // border-color blue
+
+
+
+
+
+
+
+// /** variables for grid elements
+//   block -- block (square) in calendar body
+//   header -- block (rectangle) in calendar header
+// **/
+// $block-width = 150px
+// $block-height = 150px
+// $header-width = $block-width
+// $header-height = 30px
+//
+// $border-color = #eeeff2
+// $header-background = #f9f8fd
+//
+//
+// .calendar
+//   overflow hidden
+//   position relative
+//   padding-top $header-height
+//   &__header
+//     position absolute
+//     top 0
+//     display flex
+//     margin-left $header-width
+//     overflow hidden
+//     font-weight bold
+//     .date
+//       width $header-width
+//       height $header-height
+//       box-sizing border-box
+//       text-align center
+//       background $header-background
+//       border 1px solid $border-color
+//   &__body
+//     display flex
+//     overflow-y hidden
+//   &__corner
+//     // background red
+//     position absolute
+//     top 0
+//     left 0
+//     width $header-width
+//     height $header-height
+//     background $header-background
+//     border 1px solid $border-color
+//     box-sizing border-box
+//   &__task
+//     position absolute
+//     top 10px
+//     height 20px
+//     line-height 20px
+//     padding 0 5px
+//     box-sizing border-box
+//     white-space nowrap
+//     overflow hidden
+//     text-overflow ellipsis
+//     background #d2eebd
+//     border-radius 20px
+//     font-size 14px
+//     &.-start-out-of-range
+//       border-top-left-radius 0
+//       border-bottom-left-radius 0
+//     &.-end-out-of-range
+//       border-top-right-radius 0
+//       border-bottom-right-radius 0
+//   &__task-preview
+//     width 200px
+//     height 20px
+//     background #d2eebd
+//     border-radius 20px
+//     text-align center
+//
+//
+//
+// .timeline
+//   &__assignees-list
+//     position absolute
+//     top 0
+//     left 0
+//     padding-top $header-height
+//     text-align center
+//     .assignee
+//       width $block-width
+//       height $block-height
+//       // background lightgreen
+//       border 1px solid $border-color
+//       box-sizing border-box
+//   &__rows-list
+//     margin-left $block-width
+//     overflow auto
+//     font-size 0 // hack to prevent spaces between inline elements (.row)
+//     .row
+//       display inline-flex
+//       position relative
+//       box-sizing border-box
+//       text-align center
+//       font-size 10px
+//       .block
+//         // background lightblue
+//         width $block-width
+//         height $block-height
+//         box-sizing border-box
+//         border 1px solid $border-color
+//         background white
+//         &.-highlight
+//           background #f8fbd0
