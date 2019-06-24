@@ -20,7 +20,7 @@ class FilmListWrapper extends React.Component {
 
   componentDidMount() {
     const { fetchData } = this.props;
-    fetchData();
+    // fetchData();
   }
 
   onSort(e) {
@@ -51,6 +51,7 @@ class FilmListWrapper extends React.Component {
 }
 
 export default withTracker((state) => {
+  Meteor.subscribe('films');
   const sortfilms = _.orderBy(Films.find({}).fetch(), state.showsPage.sortFilter, 'desc');
   const films = sortfilms.filter(item => item.title.toLowerCase().includes(state.showsPage.serchText.toLowerCase()));
   return {

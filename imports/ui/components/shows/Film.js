@@ -16,7 +16,6 @@ const Film = ({
         <span className="sort">{popularity}</span>
         <span className="sort">{vote_average}</span>
       </div>
-      
     </div>
   </div>
 );
