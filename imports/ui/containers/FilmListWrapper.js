@@ -9,7 +9,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { _ } from 'lodash';
 import FilmsList from '../components/shows/FilmsList';
 import { Films } from '../../api/db/filmsdb';
-
 import '../styles/films.css';
 
 class FilmListWrapper extends React.Component {
@@ -30,7 +29,6 @@ class FilmListWrapper extends React.Component {
   }
 
   onSearch(e) {
-    console.log('onsearch');
     const { searchData } = this.props;
     searchData(e.target.value);
   }
@@ -38,12 +36,14 @@ class FilmListWrapper extends React.Component {
   render() {
     const { films } = this.props;
     return (
-      <div className="FilmListTableHeader">
-        <span className="sort">Sort by: </span>
-        <span className="sort" id="year" onClick={this.onSort}>Year</span>
-        <span className="sort" id="popularity" onClick={this.onSort}>Popularity</span>
-        <span className="sort" id="vote_average" onClick={this.onSort}>Vote average</span>
-        <input type="text" placeholder="search.." onChange={this.onSearch} />
+      <div className="FilmListTable">
+        <input className='search' type="text" placeholder="search.." onChange={this.onSearch} />
+        <span className="number"><b>№</b></span>
+        <span className="poster"><b>Poster</b></span>
+        <span className="title"><b>Title</b></span>
+        <span className="sort" onClick={this.onSort}><b id="year">Year</b></span>
+        <span className="sort" onClick={this.onSort}><b id="popularity">Popularity</b></span>
+        <span className="sort" onClick={this.onSort}><b id="vote_average">Vote average</b></span>
         <FilmsList films={films} />
       </div>
     );
@@ -52,7 +52,7 @@ class FilmListWrapper extends React.Component {
 
 export default withTracker((state) => {
   const sortfilms = _.orderBy(Films.find({}).fetch(), state.showsPage.sortFilter, 'desc');
-  const films = sortfilms.filter(item => item.title.toLowerCase().includes(state.showsPage.serchText));
+  const films = sortfilms.filter(item => item.title.toLowerCase().includes(state.showsPage.serchText.toLowerCase()));
   return {
     films,
   };

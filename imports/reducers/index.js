@@ -16,7 +16,6 @@ function showsPage(state = initialState, action) {
         sortFilter: action.filter,
       };
     case 'SEARCH_ACTION':
-      console.log('search_reducer ' + action.text);
       return {
         ...state,
         serchText: action.text,

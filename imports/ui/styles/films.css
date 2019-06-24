@@ -1,38 +1,83 @@
-.FilmListTableHeader {
+
+input:focus{
+    outline: none;
+}
+
+.search {
+    display: block;
+    width: 60%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 26px;
+    margin: 100px auto;
+    padding-left: 15px;
+    border: 1px solid grey;
+}
+
+.FilmListTable {
     width: 80%;
     margin: 0 auto;
+    align-items : center;
 }
 
-.FilmListTableHeader span {
-    font-size: 22px;
+.FilmListTable span {
+    display: inline-block;
+    font-size: 24px;
+    text-align: center;
+    margin: 8px;
+    cursor: pointer;
 }
 
-.FilmListTableHeader span.sort {
-    margin: 0 30px;
+
+.FilmListTable span.number {
+    width: 100px;
 }
 
+.FilmListTable span.poster {
+    width: 200px;
+}
+
+.FilmListTable span.title {
+    width: 300px;
+}
+
+
+.FilmListTable span.sort {
+    width: 200px;
+}
 
 .filmItem {
+    height: 300px;
+    overflow: hidden;
     display: flex;
-    margin: 40px 10px;
-
-
+    margin: 20px 0;
+    padding-top: 20px;
+    border-top: 1px solid lightgrey;
 }
 
-.descriptionSection {
-    padding-left: 20px;
+
+.filmItem span {
+    font-size: 32px;
+    margin-top: 120px;
+    cursor: default;
 }
 
-.descriptionSection div {
-    padding: 10px;
+.filmItem img {
+    margin: 8px;
 }
 
-.descriptionSection label {
-    font-size: 22px;
+.filmItem title, description {
+    display: block;
 }
 
-.descriptionSection .title {
-    font-size: 36px;
+.generalInfo {
+    display: flex;
+}
+
+.description {
+    padding: 20px 50px;
+    font-size: 24px;
+    text-align: justify;
 }
 
 .loadMoreBtn {
