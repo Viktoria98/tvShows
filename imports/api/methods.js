@@ -8,7 +8,6 @@ import _ from 'lodash';
 import { url, traktApiKey, tmdbUrl, tmdbApiKey, imgUrl } from '../startup/config.js';
 import { Films } from './db/filmsdb.js';
 
-
 Meteor.methods({
   getData() {
     try {
@@ -20,6 +19,7 @@ Meteor.methods({
         },
       });
       Meteor.call('getFromTMDB', data.data);
+      return data.data;
     } catch (error) {
       throw new Meteor.Error('oops', 'something broke');
     }
