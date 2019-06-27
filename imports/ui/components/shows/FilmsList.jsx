@@ -1,6 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/jsx-filename-extension */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import Film from './Film';
@@ -19,11 +16,9 @@ class FilmsList extends React.Component {
             number={i}
             title={film.title}
             year={film.year}
-            poster_path={film.poster_path}
-            overview={film.overview}
+            posterPath={film.posterPath}
             popularity={film.popularity}
-            genres={film.genres}
-            vote_average={film.vote_average}
+            voteAverage={film.voteAverage}
           />
         ))}
       </div>
@@ -36,6 +31,9 @@ FilmsList.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       year: PropTypes.number.isRequired,
+      posterPath: PropTypes.string.isRequired,
+      popularity: PropTypes.number.isRequired,
+      voteAverage: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
 };

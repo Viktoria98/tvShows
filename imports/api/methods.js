@@ -30,9 +30,9 @@ Meteor.methods({
         const posterUrl = `${tmdbUrl}/${element.ids.tmdb}?api_key=${tmdbApiKey}`;
         const film = HTTP.call('GET', posterUrl);
         const {data} = film;
-        element.poster_path = `${imgUrl}${data.poster_path}`;
+        element.posterPath = `${imgUrl}${data.poster_path}`;
         element.popularity = data.popularity;
-        element.vote_average = data.vote_average;
+        element.voteAverage = data.vote_average;
         Films.insert(element);
       } catch (error) {
         throw new Meteor.Error('oops', 'something broke');

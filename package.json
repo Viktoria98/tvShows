@@ -27,6 +27,7 @@
     "meteor-node-stubs": "^0.4.1",
     "mocha": "^6.1.4",
     "npm": "^6.9.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
