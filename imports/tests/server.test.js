@@ -1,9 +1,9 @@
-import assert, { rejects, doesNotReject } from 'assert';
+// eslint-disable-next-line import/no-unresolved
+import { Meteor } from 'meteor/meteor';
 import expect from 'expect';
 import { Films } from '../api/db/filmsdb';
 import { url } from '../startup/config';
 import '../api/methods';
-import { Meteor } from 'meteor/meteor';
 
 describe('url', () => {
   it('must be string', () => {
@@ -12,8 +12,8 @@ describe('url', () => {
 });
 
 function callAPI() {
-  return new Promise((resolve, reject) => {
-    res = Meteor.call('getData');
+  return new Promise((resolve) => {
+    const res = Meteor.call('getData');
     return resolve(res);
   });
 }

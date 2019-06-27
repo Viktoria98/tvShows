@@ -1,22 +1,22 @@
 /* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
-/* eslint-disable no-console */
 import { Meteor } from 'meteor/meteor';
-import { Mongo } from 'meteor/mongo';
-import { check } from 'meteor/check';
-import _ from 'lodash';
-import { url, traktApiKey, tmdbUrl, tmdbApiKey, imgUrl } from '../startup/config.js';
-import { Films } from './db/filmsdb.js';
+import { HTTP } from 'meteor/http';
+import {
+  url, traktApiKey, tmdbUrl, tmdbApiKey, imgUrl,
+} from '../startup/config';
+import { Films } from './db/filmsdb';
+
+const myHeaders = {
+  'Content-Type': 'application/json',
+  'trakt-api-version': '2',
+  'trakt-api-key': traktApiKey,
+};
 
 Meteor.methods({
   getData() {
     try {
       const data = HTTP.call('GET', url, {
-        headers: {
-          'Content-Type': 'application/json',
-          'trakt-api-version': '2',
-          'trakt-api-key': traktApiKey,
-        },
+        headers: myHeaders,
       });
       Meteor.call('getFromTMDB', data.data);
       return data.data;
@@ -29,7 +29,7 @@ Meteor.methods({
       try {
         const posterUrl = `${tmdbUrl}/${element.ids.tmdb}?api_key=${tmdbApiKey}`;
         const film = HTTP.call('GET', posterUrl);
-        const {data} = film;
+        const { data } = film;
         element.posterPath = `${imgUrl}${data.poster_path}`;
         element.popularity = data.popularity;
         element.voteAverage = data.vote_average;
@@ -41,13 +41,9 @@ Meteor.methods({
   },
   getPage(page) {
     try {
-      pageUrl = `${url}?page=${page}`;
+      const pageUrl = `${url}?page=${page}`;
       const film = HTTP.call('GET', pageUrl, {
-        headers: {
-          'Content-Type': 'application/json',
-          'trakt-api-version': '2',
-          'trakt-api-key': traktApiKey,
-        },
+        headers: myHeaders,
       });
       const { data } = film;
       Meteor.call('getFromTMDB', data);

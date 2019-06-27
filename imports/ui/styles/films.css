@@ -1,7 +1,4 @@
-@font-face {
-    font-family: Roboto;
-    src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-}
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,100,500,900);
 
 body {
     font-family: 'Roboto', sans-serif;

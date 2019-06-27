@@ -1,12 +1,10 @@
 /* eslint-disable import/no-unresolved */
 import { combineReducers } from 'redux';
-import { _ } from 'lodash';
 
 const initialState = {
   sortFilter: '',
   serchText: '',
 };
-
 
 function showsPage(state = initialState, action) {
   switch (action.type) {

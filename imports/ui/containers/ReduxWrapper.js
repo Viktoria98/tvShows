@@ -1,22 +1,17 @@
-/* eslint-disable import/no-unresolved */
+// import { setInitialState } from '../../actions/index';
 import { connect } from 'react-redux';
-import { getDataAction } from '../../actions/index';
-import { sortByColumn } from '../../actions/index';
-import { setInitialState } from '../../actions/index';
-import { search } from '../../actions/index';
+import { sortByColumn, search } from '../../actions/index';
 import FilmListWrapper from './FilmListWrapper';
+
 
 const mapStateToProps = state => ({
   showsPage: state.showsPage,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: () => {
-    dispatch(getDataAction());
-  },
-  initialState: (list) => {
-    dispatch(setInitialState(list));
-  },
+  // initialState: (list) => {
+  //   dispatch(setInitialState(list));
+  // },
   sortData: (filter) => {
     dispatch(sortByColumn(filter));
   },
