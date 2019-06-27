@@ -1,4 +1,18 @@
-input:focus{
+@font-face {
+    font-family: Roboto;
+    src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f1f1f1;
+}
+
+input:focus {
+    outline: none;
+}
+
+button:focus {
     outline: none;
 }
 
@@ -24,7 +38,6 @@ input:focus{
     font-size: 24px;
     text-align: center;
     margin: 8px;
-    cursor: pointer;
 }
 
 
@@ -45,13 +58,32 @@ input:focus{
     width: 200px;
 }
 
+.FilmListTable button.sort {
+    width: 200px;
+    font-size: 24px;
+    text-align: center;
+    margin: 8px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.FilmListTable button.sort:hover {
+    color: lightgray;
+}
+
 .filmItem {
     height: 300px;
     overflow: hidden;
     display: flex;
     margin: 20px 0;
-    padding-top: 20px;
+    padding: 20px 0;
     border-top: 1px solid lightgrey;
+    background-color: #ffffff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 2px 2px 2px rgba(224,224,224,1);
+    -moz-box-shadow: 0px 2px 2px 2px rgba(224,224,224,1);
+    box-shadow: 0px 2px 2px 2px rgba(224,224,224,1);
 }
 
 
@@ -82,7 +114,7 @@ input:focus{
 .loadMoreBtn {
     cursor: pointer;
     display: block;
-    width: 200px;
+    width: 300px;
     margin: auto;
     padding-bottom: 20px;
     font-size: 28px;

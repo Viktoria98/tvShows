@@ -29,33 +29,33 @@ describe('<PaginationComponent/>', () => {
   });
 });
 
-// describe('<FilmListWrapper/>', () => {
-//   it('should have an buttons to sort', () => {
-//     const wrapper = shallow(<FilmListWrapper />);
-//     expect(wrapper.find('button')).to.have.length(3);
-//   });
+describe('<FilmListWrapper/>', () => {
+  it('should have an buttons to sort', () => {
+    const wrapper = shallow(<FilmListWrapper />);
+    expect(wrapper.find('button')).to.have.length(3);
+  });
 
-//   it('should have a <FilmsList/> component', () => {
-//     const wrapper = shallow(<FilmListWrapper />);
-//     expect(wrapper.find(FilmsList)).to.have.length(1);
-//   });
+  it('should have a <FilmsList/> component', () => {
+    const wrapper = shallow(<FilmListWrapper />);
+    expect(wrapper.find(FilmsList)).to.have.length(1);
+  });
 
-//   it('should have an input to search', () => {
-//     const wrapper = shallow(<FilmListWrapper />);
-//     expect(wrapper.find('input')).to.have.length(1);
-//   });
+  it('should have an input to search', () => {
+    const wrapper = shallow(<FilmListWrapper />);
+    expect(wrapper.find('input')).to.have.length(1);
+  });
 
-//   it('test sort button', () => {
-//     const mockCallBack = mock.fn();
-//     const wrapper = shallow(<FilmListWrapper onSort={mockCallBack}/>);
-//     wrapper.find('button').simulate('click');
-//     expect(mockCallBack.mock.calls.length).equal(1);
-//   });
+  it('test sort button', () => {
+    const mockCallBack = mock.fn();
+    const wrapper = shallow(<FilmListWrapper onSort={mockCallBack} />);
+    wrapper.find('button').simulate('click');
+    expect(mockCallBack.mock.calls.length).equal(1);
+  });
 
-//   it('test change input', () => {
-//     const mockCallBack = mock.fn();
-//     const wrapper = shallow(<FilmListWrapper onSearch={mockCallBack}/>);
-//     wrapper.find('button').simulate('click');
-//     expect(mockCallBack.mock.calls.length).equal(1);
-//   });
-// });
+  it('test change input', () => {
+    const mockCallBack = mock.fn();
+    const wrapper = shallow(<FilmListWrapper onSearch={mockCallBack} />);
+    wrapper.find('button').simulate('click');
+    expect(mockCallBack.mock.calls.length).equal(1);
+  });
+});

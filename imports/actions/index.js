@@ -4,12 +4,6 @@ import { Meteor } from 'meteor/meteor';
 import '../api/methods';
 
 // eslint-disable-next-line import/prefer-default-export
-export function getDataAction() {
-  return () => {
-    Meteor.call('getData');
-  };
-}
-
 export function sortByColumn(filter) {
   return {
     type: 'SORT_ACTION',
