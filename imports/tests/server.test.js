@@ -47,7 +47,7 @@ describe('films collection', () => {
     expect(Films.find().count()).toBe(1);
   });
 
-  it('films successfully deleted', () => {
+  it('should add ', () => {
     Films.insert(films.films);
     Films.remove({});
     expect(Films.find().count()).toBe(0);

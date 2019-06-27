@@ -34,9 +34,9 @@ class FilmListWrapper extends React.Component {
         <span className="number"><b>№</b></span>
         <span className="poster"><b>Poster</b></span>
         <span className="title"><b>Title</b></span>
-        <span className="sort" onClick={this.onSort}><b id="year">Year</b></span>
-        <span className="sort" onClick={this.onSort}><b id="popularity">Popularity</b></span>
-        <span className="sort" onClick={this.onSort}><b id="vote_average">Vote average</b></span>
+        <button className="sort" onClick={this.onSort}><b id="year">Year</b></button>
+        <button className="sort" onClick={this.onSort}><b id="popularity">Popularity</b></button>
+        <button className="sort" onClick={this.onSort}><b id="vote_average">Vote average</b></button>
         <FilmsList films={films} />
       </div>
     );

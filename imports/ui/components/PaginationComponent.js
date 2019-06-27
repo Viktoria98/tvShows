@@ -10,7 +10,7 @@ import React from 'react';
 
 const PaginationComponent = ({ loadMore, currentPage }) => (
   <div className="">
-    <span className="loadMoreBtn" onClick={() => { loadMore(currentPage); }}>Load More </span>
+    <button className="loadMoreBtn" onClick={() => { loadMore(currentPage); }}>Load More </button>
   </div>
 );
 

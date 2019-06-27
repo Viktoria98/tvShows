@@ -1,6 +1,4 @@
 import assert from "assert";
-import { Films } from '../imports/api/db/filmsdb';
-import expect from 'expect';
 import '../imports/tests/main.test';
 
 describe("tvShows", function () {
