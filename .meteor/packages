@@ -20,7 +20,6 @@ static-html
 http
 meteortoys:allthings
 react-meteor-data
-ff:ui-elements
 meteortesting:mocha
 johanbrook:publication-collector
 cryptoquick:stylus-multi
