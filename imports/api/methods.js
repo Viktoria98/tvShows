@@ -1,10 +1,12 @@
 /* eslint-disable import/no-unresolved */
 import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
-import {
-  url, traktApiKey, tmdbUrl, tmdbApiKey, imgUrl,
-} from '../startup/config';
 import { Films } from './db/filmsdb';
+
+const { settings } = Meteor;
+const {
+  url, traktApiKey, tmdbUrl, tmdbApiKey, imgUrl,
+} = settings;
 
 const myHeaders = {
   'Content-Type': 'application/json',
