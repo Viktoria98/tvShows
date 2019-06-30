@@ -14,43 +14,49 @@ const myHeaders = {
   'trakt-api-key': traktApiKey,
 };
 
-Meteor.methods({
-  getData() {
-    try {
-      const data = HTTP.call('GET', url, {
-        headers: myHeaders,
-      });
-      Meteor.call('getFromTMDB', data.data);
-      return data.data;
-    } catch (error) {
-      throw new Meteor.Error('oops', 'something broke');
-    }
-  },
-  getFromTMDB(filmsArray) {
-    filmsArray.forEach((element) => {
-      try {
-        const posterUrl = `${tmdbUrl}/${element.ids.tmdb}?api_key=${tmdbApiKey}`;
-        const film = HTTP.call('GET', posterUrl);
-        const { data } = film;
-        element.posterPath = `${imgUrl}${data.poster_path}`;
-        element.popularity = data.popularity;
-        element.voteAverage = data.vote_average;
-        Films.insert(element);
-      } catch (error) {
-        throw new Meteor.Error('oops', 'something broke');
-      }
+export const getData = () => {
+  try {
+    const data = HTTP.call('GET', url, {
+      headers: myHeaders,
     });
-  },
-  getPage(page) {
+    getFromTMDB(data.data);
+    return data.data;
+  } catch (error) {
+    throw new Meteor.Error('oops', 'something broke');
+  }
+};
+
+const getFromTMDB = (filmsArray) => {
+  filmsArray.forEach((element) => {
     try {
-      const pageUrl = `${url}?page=${page}`;
-      const film = HTTP.call('GET', pageUrl, {
-        headers: myHeaders,
-      });
+      const posterUrl = `${tmdbUrl}/${element.ids.tmdb}?api_key=${tmdbApiKey}`;
+      const film = HTTP.call('GET', posterUrl);
       const { data } = film;
-      Meteor.call('getFromTMDB', data);
+      element.posterPath = `${imgUrl}${data.poster_path}`;
+      element.popularity = data.popularity;
+      element.voteAverage = data.vote_average;
+      Films.insert(element);
     } catch (error) {
       throw new Meteor.Error('oops', 'something broke');
     }
-  },
+  });
+};
+
+const getPage = (page) => {
+  try {
+    const pageUrl = `${url}?page=${page}`;
+    const film = HTTP.call('GET', pageUrl, {
+      headers: myHeaders,
+    });
+    const { data } = film;
+    getFromTMDB(data);
+  } catch (error) {
+    throw new Meteor.Error('oops', 'something broke');
+  }
+};
+
+Meteor.methods({
+  'getData' : () => getData(),
+  'getFromTMDB' : (filmsArray) => getFromTMDB(filmsArray),
+  'getPage' : (page) => getPage(page),
 });

@@ -18,7 +18,11 @@ export function search(text) {
 
 export function fetchFilmsByPage(page) {
   return () => {
-    Meteor.call('getPage', page);
+    Meteor.call('getPage', page, (error) => {
+      if (error) {
+        alert(error, error.reason);
+      }
+    });
   };
 }
 
