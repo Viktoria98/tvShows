@@ -44,7 +44,7 @@ class FilmListWrapper extends React.Component {
 
 export default withTracker((state) => {
   Meteor.subscribe('films');
-  const sortfilms = _.orderBy(Films.find({}).fetch(), state.showsPage.sortFilter, 'desc');
+  const sortfilms = _.orderBy(Films.find({}, { limit: state.pagination.limit }).fetch(), state.showsPage.sortFilter, 'desc');
   const films = sortfilms.filter(
     item => item.title.toLowerCase()
       .includes(state.showsPage.serchText

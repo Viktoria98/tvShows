@@ -6,6 +6,7 @@ import FilmListWrapper from './FilmListWrapper';
 
 const mapStateToProps = state => ({
   showsPage: state.showsPage,
+  pagination: state.pagination,
 });
 
 const mapDispatchToProps = dispatch => ({

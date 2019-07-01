@@ -23,11 +23,12 @@ function showsPage(state = initialState, action) {
   }
 }
 
-function pagination(state = { currentPage: 1 }, action) {
+function pagination(state = { currentPage: 1, limit: 10 }, action) {
   switch (action.type) {
     case 'SET_PAGE':
       return {
         currentPage: action.page + 1,
+        limit: state.limit + 10,
       };
     default:
       return state;

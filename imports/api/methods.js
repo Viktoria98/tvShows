@@ -43,15 +43,17 @@ const getFromTMDB = (filmsArray) => {
 };
 
 const getPage = (page) => {
-  try {
-    const pageUrl = `${url}?page=${page}`;
-    const film = HTTP.call('GET', pageUrl, {
-      headers: myHeaders,
-    });
-    const { data } = film;
-    getFromTMDB(data);
-  } catch (error) {
-    throw new Meteor.Error('oops', 'something broke');
+  if (Films.find({}).count() / 10 < page) {
+    try {
+      const pageUrl = `${url}?page=${page}`;
+      const film = HTTP.call('GET', pageUrl, {
+        headers: myHeaders,
+      });
+      const { data } = film;
+      getFromTMDB(data);
+    } catch (error) {
+      throw new Meteor.Error('oops', 'something broke');
+    }
   }
 };
 
