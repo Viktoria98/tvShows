@@ -34,6 +34,7 @@ export const getData = () => {
 };
 
 const getFromTMDB = (filmsArray) => {
+  const arr = [];
   filmsArray.forEach((element) => {
     try {
       const posterUrl = `${tmdbUrl}/${element.ids.tmdb}?api_key=${tmdbApiKey}`;
