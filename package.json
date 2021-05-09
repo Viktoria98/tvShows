@@ -27,7 +27,7 @@
     "font-awesome": "^4.7.0",
     "i": "^0.3.6",
     "jest-mock": "^24.8.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "meteor-node-stubs": "^0.4.1",
     "mocha": "^6.1.4",
     "npm": "^6.9.0",
