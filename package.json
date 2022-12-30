@@ -29,7 +29,7 @@
     "jest-mock": "^24.8.0",
     "lodash": "^4.17.11",
     "meteor-node-stubs": "^0.4.1",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "npm": "^6.9.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
